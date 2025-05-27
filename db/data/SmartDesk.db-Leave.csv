@@ -1,0 +1,8 @@
+ID,employeeId,leaveType,status
+leave-0001,emp-0001,Casual,Approved
+leave-0002,emp-0001,Paid,Pending
+leave-0003,emp-0002,Sick,Approved
+leave-0004,emp-0003,Maternity,Pending
+leave-0005,emp-0001,Paternity,Approved
+leave-0006,emp-0002,Unpaid,Rejected
+leave-0007,emp-0003,Bereavement,Approved

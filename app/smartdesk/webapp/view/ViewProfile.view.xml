@@ -1,0 +1,76 @@
+<mvc:View
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    controllerName="smartdesk.controller.ViewProfile">
+    
+    <m:Page>
+        <m:content>
+            <f:DynamicPage>
+                <f:title>
+                    <f:DynamicPageTitle>
+                        <f:heading>
+                            <m:Title text="User Profile" class="ProfileHeadingTitle"/>
+                        </f:heading>
+                    </f:DynamicPageTitle>
+                </f:title>
+                <f:header>
+                    <f:DynamicPageHeader>
+                        <m:HBox class="profileHeader">
+                            <m:Avatar src="sap-icon://customer" displayShape="Circle" class="profileAvatar"/>
+                            <m:VBox class="profileInfo">
+                                <m:Title text="{/oUserProfile/fullName}" level="H2" class="profileInfoTitle"/>
+                                <m:Text text="Designation: {/oUserProfile/position}" class="profileInfoText"/>
+                                <m:Text text="Department: {/oUserProfile/department}" class="profileInfoText"/>
+                            </m:VBox>
+                        </m:HBox>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                 <m:ScrollContainer>
+                    <m:Panel headerText="Personal Information:" class="sectionPanel">
+                        <m:VBox>
+                            <m:HBox>
+                                <m:Text text="Email: " class="sectionText"/>
+                                <m:Text text="{/oUserProfile/email}" class="sectionTextValue"/>
+                            </m:HBox>
+                            <m:HBox>
+                                <m:Text text="Phone: " class="sectionText"/>
+                                <m:Text text="{/oUserProfile/phone}" class="sectionTextValue"/>
+                            </m:HBox>
+                            <m:HBox>
+                                <m:Text text="DOB: " class="sectionText"/>
+                                <m:Text text="{/oUserProfile/dob}" class="sectionTextValue"/>
+                            </m:HBox>
+                        </m:VBox>
+                    </m:Panel>
+                    <m:Panel headerText="Job Information:" class="sectionPanel">
+                        <m:VBox>
+                            <m:HBox>
+                                <m:Text text="Employee ID:" class="sectionText"/>
+                                <m:Text text="{/oUserProfile/employeeID}" class="sectionTextValue"/>
+                            </m:HBox>
+                            <m:HBox>
+                                <m:Text text="Department: " class="sectionText"/>
+                                <m:Text text="{/oUserProfile/department}" class="sectionTextValue"/>
+                            </m:HBox>
+                            <m:HBox>
+                                <m:Text text="Joining Date: " class="sectionText"/>
+                                <m:Text text="{/oUserProfile/joiningDate}" class="sectionTextValue"/>
+                            </m:HBox>
+                        </m:VBox>
+                    </m:Panel>
+                    <m:Panel headerText="Project Information:" class="sectionPanel">
+                        <m:List items="{/oUserProfile/projects}">
+                            <m:StandardListItem title="{projectName}" 
+                                                description="Role: {role}, Duration: {duration}" />
+                        </m:List>
+                    </m:Panel>
+                   </m:ScrollContainer> 
+                </f:content>
+            </f:DynamicPage>
+        </m:content>
+    </m:Page>
+</mvc:View>

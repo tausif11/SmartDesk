@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    controllerName="smartdesk.controller.PayStatement">
+
+    <m:Page title="Pay Slip Statement" titleAlignment="Center">
+        <m:content>
+            <m:Panel class="fPanel" headerText="Payslip ( {/oPaySlip/month} )">
+                <layout:Grid defaultSpan="L4 M4">
+                    <layout:content>
+                        <m:Text text="Employee Name : {/oPaySlip/employeeName}"/>
+                        <m:Text text="Employee ID : {/oPaySlip/employeeID}"/>
+                        <m:Text text="Department : {/oPaySlip/department}"/>
+                        <m:Text text="Position : {/oPaySlip/position}"/>
+                        <m:Text text="Pay Period : {/oPaySlip/month}"/>
+                        <m:Text text="Pay Date : {/oPaySlip/payDate}"/>
+                        <m:Text text="Basic Salary : {/oPaySlip/basicSalary}"/>
+                        <m:Text text="Bonus : {/oPaySlip/bonus}"/>
+                        <m:Text text="Allowances : {/oPaySlip/allowances}"/>
+                        <m:Text text="Tax Deduction : {/oPaySlip/taxDeduction}"/>
+                        <m:Text text="Provident Fund : {/oPaySlip/providentFund}"/>
+                        <m:Text text="Other Deductions : {/oPaySlip/otherDeductions}"/>
+                        <m:Text text="Total Earnings : {/oPaySlip/totalEarnings}"/>
+                        <m:Text text="Total Deductions : {/oPaySlip/totalDeductions}"/>
+                        <m:Text text="Net Pay (After Deductions) : {/oPaySlip/netPay}" class="boldText"/>
+                    </layout:content>
+                </layout:Grid>
+                <m:Button text=" Download Pay Slip" 
+                      icon="sap-icon://download" 
+                      press="onDownloadPaySlip" 
+                      class="PayslipBtn"/>
+            </m:Panel>
+        </m:content>
+    </m:Page>
+</mvc:View>

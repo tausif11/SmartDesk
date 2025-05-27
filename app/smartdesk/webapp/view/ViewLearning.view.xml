@@ -1,0 +1,32 @@
+<mvc:View controllerName="smartdesk.controller.ViewLearning"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Page title="My Learning" titleAlignment="Center" class="learningPage">
+        <content>
+            <Panel class="learningPanel">
+                <Toolbar class="learningToolbar">
+                   <Title text="Courses" class="learningTitle"/>
+                   <ToolbarSpacer />
+                   <SearchField width="250px"
+                                placeholder="Search courses..."
+                                liveChange="onSearch"
+                                class="learningSearch"/>
+                </Toolbar>
+                <List id="learningList" items="{/learningData}" class="learningList">
+                    <ObjectListItem title="{title}" 
+                                    intro="{category}" 
+                                    number="{progress}%" 
+                                    numberState="Information"
+                                    class="learningListItem">
+                        <attributes>
+                            <ObjectAttribute text="{duration} mins" class="learningDuration"/>
+                        </attributes> 
+                    </ObjectListItem>    
+                </List>  
+            </Panel> 
+        </content>    
+    </Page>
+</mvc:View>

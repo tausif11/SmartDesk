@@ -1,0 +1,2 @@
+ID,WorkflowName,Status,startDate,endDate,Technology,AssignedTo,Client,Priority,CreatedBy,LastUpdated,ProcessType,ApprovalStatus,Deadline,Description
+11111111-1111-1111-1111-111111111111,Smart-Desk UI5,Ongoing,2025-02-24,N/A,"UI5, JavaScript, CSS, JSON-Data",Md. Tausif Alam,"INK IT Solutions Pvt. Ltd.",High,Project Manager,2025-05-23,Approval,Pending,2025-04-30,"This workflow is for UI5 project management and tracking."

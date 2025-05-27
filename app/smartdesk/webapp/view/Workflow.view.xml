@@ -1,0 +1,94 @@
+<mvc:View xmlns:form="sap.ui.layout.form" xmlns:table2="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	xmlns:odata="sap.ui.comp.odata"
+	xmlns="sap.uxap"
+	xmlns:vbm="sap.ui.vbm"
+	xmlns:table="sap.ui.table"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:tnt="sap.tnt"
+    controllerName="smartdesk.controller.Workflow"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m">
+	<m:Page title="Workflow Details" titleAlignment="Center" class="mPage">
+	  <m:ScrollContainer class="WPage">
+		<m:content>
+					<layout:VerticalLayout>
+						<layout:Grid defaultSpan="L4 M4">
+							<layout:content>
+								<m:Text text="Workflow Name: {/WorkflowData/WorkflowName}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Status: {/WorkflowData/Status}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Assigned To: {/WorkflowData/AssignedTo}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Company: {/WorkflowData/Client}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Start Date: {/WorkflowData/startDate}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="End Date: {/WorkflowData/endDate}" class="fCard" />
+							</layout:content>
+						</layout:Grid>
+						<layout:Grid defaultSpan="L4 M4">
+							<layout:content>
+								<m:Text text="Technology: {/WorkflowData/Technology}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Created By: {/WorkflowData/CreatedBy}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Last Updated: {/WorkflowData/LastUpdated}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Process Type: {/WorkflowData/ProcessType}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Approval Status: {/WorkflowData/ApprovalStatus}" class="fCard" />
+							</layout:content>
+							<layout:content>
+								<m:Text text="Description: {/WorkflowData/Description}" class="fCard" />
+							</layout:content>
+						</layout:Grid>
+					</layout:VerticalLayout>
+					<m:Table headerText="Workflow Steps" items="{/WorkflowData/Steps}">
+						<m:columns>
+					    	<m:Column class="sapUiTableHdr">
+								<m:Text text="Step Name"/>
+							</m:Column>
+							<m:Column >
+								<m:Text text="Status"/>
+							</m:Column>
+							<m:Column >
+								<m:Text text="Assigned To"/>
+							</m:Column>
+                            <m:Column>
+								<m:Text text="Documents"/>
+							</m:Column>
+						</m:columns>
+						<m:items>
+							<m:ColumnListItem>
+								<m:cells >
+									<m:Text text="{Step}"/>
+									<m:Text text="{Status}"/>
+									<m:Text text="{AssignedTo}"/>
+                                    <m:List items="{Documents}">
+                                            <m:items>
+                                                <m:StandardListItem title="{Name}" 
+                                                                    description="Type: {Type}, Uploaded By: {UploadedBy}" 
+                                                                    icon="sap-icon://process" />
+                                            </m:items>
+                                           </m:List>
+								</m:cells>
+							</m:ColumnListItem>
+						</m:items>
+					</m:Table>
+				</m:content>
+			</m:ScrollContainer>
+	</m:Page>    
+</mvc:View>

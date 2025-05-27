@@ -1,0 +1,146 @@
+<mvc:View xmlns:tnt="sap.tnt" xmlns:vbm="sap.ui.vbm" xmlns:core="sap.ui.core" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          xmlns:m="sap.m" 
+          xmlns:f="sap.f"
+          controllerName="smartdesk.controller.ViewOrg">
+
+    <f:DynamicPage>
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                   <m:Title text="My Organisation" class="headingTitle"/>
+                </f:heading>
+            </f:DynamicPageTitle>  
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <m:VBox class="headerSection">
+                    <m:Text text="Welcome to {/oOrgData/companyName}" class="titleText"/>
+                    <m:Text text="IT Service &amp; Consulting | Established {/oOrgData/foundedYear} | {/oOrgData/headquarters}" />
+                </m:VBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <m:ScrollContainer width="100%" horizontal="false" vertical="true">
+                <m:VBox class="sapUiSmallMargin">
+
+                    <m:Panel headerText="Organisation Overview:" class="sectionPanel">
+                        <m:HBox justifyContent="SpaceBetween" class="overviewSection">
+                            <m:VBox>
+                                <m:ObjectHeader title="INKIT Solutions" number="500+" numberUnit="Employees">
+                                    <m:attributes>
+                                        <m:ObjectAttribute title="Industry" text="IT Services &amp; Consulting"/>
+                                        <m:ObjectAttribute title="Founded" text="2014"/>
+                                        <m:ObjectAttribute title="Headquarters" text="Melbourne, VIC"/>
+                                    </m:attributes>
+                                </m:ObjectHeader>
+                            </m:VBox>
+                            <m:VBox alignItems="End">
+                                <m:Avatar src="image.png" displayShape="Circle" displaySize="L"/>
+                            </m:VBox>
+                        </m:HBox>
+                    </m:Panel>
+
+                    <m:Panel headerText="Departments:">
+                        <m:HBox justifyContent="SpaceBetween">
+                            <m:Panel headerText="{/oOrgData/departments/0/name}" class="departmentCard">
+                                <m:VBox>
+                                    <m:Text text="{/oOrgData/departments/0/description}"/>
+                                    <m:Button text="View Team" press="onViewDepartment"/>
+                                </m:VBox>
+                            </m:Panel>
+                            <m:Panel headerText="{/oOrgData/departments/1/name}" class="departmentCard">
+                                <m:VBox>
+                                    <m:Text text="{/oOrgData/departments/1/description}"/>
+                                    <m:Button text="View Team" press="onViewDepartment"/>
+                                </m:VBox>
+                            </m:Panel>
+                            <m:Panel headerText="{/oOrgData/departments/2/name}" class="departmentCard">
+                                <m:VBox>
+                                    <m:Text text="{/oOrgData/departments/2/description}"/>
+                                    <m:Button text="View Team" press="onViewDepartment"/>
+                                </m:VBox>
+                            </m:Panel>
+                        </m:HBox>
+                    </m:Panel>
+
+                    <m:Panel class="sectionPanel">
+                       <m:Toolbar>
+                          <m:Title text="Employees: "/>
+                          <m:ToolbarSpacer />
+                          <m:SearchField width="250px"
+                                         placeholder="Search Employee..."
+                                         liveChange="onSearchEmployee"/>
+                        </m:Toolbar>
+                        <m:List id="employeeList" items="{/oOrgData/employees}" class="employeeList">
+                            <m:ObjectListItem 
+                                title="{name}" 
+                                icon="sap-icon://employee" 
+                                number="Employee"
+                                numberUnit="{designation}"/>
+                        </m:List>
+                    </m:Panel>
+
+                    <!-- New Company Values Section -->
+                    <!-- <m:Panel headerText="Company Values" class="sectionPanel">
+                        <m:VBox>
+                            <m:Text text="The core values that drive our organisation."/>
+                            <m:List>
+                                <m:ObjectListItem title="Integrity" />
+                                <m:ObjectListItem title="Innovation" />
+                                <m:ObjectListItem title="Collaboration" />
+                                <m:ObjectListItem title="Excellence" />
+                            </m:List>
+                        </m:VBox>
+                    </m:Panel> -->
+
+                    <!-- New Leadership Team Section -->
+                    <m:Panel headerText="Leadership Team: " class="sectionPanel">
+                        <m:VBox>
+                            <m:Text text="Meet the leaders who drive our organisation forward."/>
+                            <m:List>
+                                <m:ObjectListItem title="John Doe" number="CEO">
+                                    <m:attributes>
+                                        <m:ObjectAttribute title="Bio" text="John is a visionary leader with 20+ years in the IT industry." />
+                                    </m:attributes>
+                                </m:ObjectListItem>
+                                <m:ObjectListItem title="Jane Smith" number="CTO">
+                                    <m:attributes>
+                                        <m:ObjectAttribute title="Bio" text="Jane leads our technological innovations and product strategy." />
+                                    </m:attributes>
+                                </m:ObjectListItem>
+                                <m:ObjectListItem title="Michael Johnson" number="CFO">
+                                    <m:attributes>
+                                        <m:ObjectAttribute title="Bio" text="Michael oversees the financial strategy and growth of the company." />
+                                    </m:attributes>
+                                </m:ObjectListItem>
+                            </m:List>
+                        </m:VBox>
+                    </m:Panel>
+
+                    <!-- New Partner Network Section -->
+                    <m:Panel headerText="Partner Network: " class="sectionPanel">
+                        <m:VBox>
+                            <m:Text text="Our key strategic partners and collaborators."/>
+                            <m:List>
+                                <m:ObjectListItem title="SAP" />
+                                <m:ObjectListItem title="Microsoft" />
+                                <m:ObjectListItem title="Amazon Web Services" />
+                                <m:ObjectListItem title="Oracle" />
+                            </m:List>
+                        </m:VBox>
+                    </m:Panel>
+                </m:VBox>
+            </m:ScrollContainer>
+        </f:content>
+        <f:footer>
+            <tnt:ToolHeader>
+                <m:Text text="© 2025 INKIT Solutions. All Rights Reserved."></m:Text>
+               <m:ToolbarSpacer />
+                
+            </tnt:ToolHeader>
+        </f:footer>
+    </f:DynamicPage>
+
+</mvc:View>

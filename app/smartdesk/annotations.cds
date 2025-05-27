@@ -1,0 +1,1 @@
+using SmartDeskService as service from '../../srv/catalogService';

@@ -1,0 +1,2 @@
+ID,Month,EmployeeName,EmployeeID,Department,Position,PayDate,BasicSalary,Bonus,Allowances,TaxDeduction,ProvidentFund,OtherDeductions,TotalEarnings,TotalDeductions,NetPay
+pslip-0001,"May 2025","Md. Tausif Alam","EMP12345","Technology","Associate Consultant","1 May 2025","₹50,000","₹5,000","₹3,000","₹8,000","₹2,000","₹1,000","₹58,000","₹11,000","₹47,000"
