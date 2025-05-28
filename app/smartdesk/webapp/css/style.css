@@ -1,133 +1,165 @@
 /* Enter your custom styles here */
 
-.IconTabBar{
+.IconTabBar {
     width: 150%;
 }
-.customToolHeader{
+
+.customToolHeader {
     padding: 4rem;
     border-radius: 12px;
 }
-.sideContainer{
+
+.sideContainer {
     margin-left: 30px;
 }
-.QuickTitle{
+
+.QuickTitle {
     margin-left: 40px;
     font-size: x-large;
 }
-.OrgText{
+
+.OrgText {
     margin-top: 35px;
     margin-left: 40px;
-    font-size: x-large; 
+    font-size: x-large;
 }
-.EmployeeService{
+
+.EmployeeService {
     margin-top: 20px;
     margin-left: 43px;
 }
-.serviceHeader{
+
+.serviceHeader {
     width: 40px;
 }
 
-.image{
+.image {
     width: 95%;
     height: 20rem;
     margin-left: 30px;
 }
-.overlayText{
+
+.overlayText {
     top: 50%;
     left: 50%;
     font-size: 3rem;
     font-weight: bold;
-    color: #fcfbfb; 
+    color: #fcfbfb;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    border-right: 2px solid rgba(255,255,255,.75);
+    border-right: 2px solid rgba(255, 255, 255, .75);
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    transform: translateY(-110%);  
+    transform: translateY(-110%);
 }
+
 .typewriter-animation {
-    animation: 
-    typewriter 5s steps(50) infinite alternate, 
-      blinkingCursor 500ms steps(50) infinite normal;
-  }
-  @keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-  @keyframes blinkingCursor{
-    from { border-right-color: rgba(255,255,255,.75); }
-    to { border-right-color: transparent; }
-  }
-  
-.clockText{
-    font-size: 1.5rem; 
-    font-weight: bold; 
-    color: #0c0c0b; 
-    text-align: start; 
-    padding: 5px 15px; 
-    border-radius: 8px; 
-    display: inline-block; 
-    margin-top: 10px; 
+    animation:
+        typewriter 5s steps(50) infinite alternate,
+        blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinkingCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, .75);
+    }
+
+    to {
+        border-right-color: transparent;
+    }
+}
+
+.clockText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0c0c0b;
+    text-align: start;
+    padding: 5px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
     margin-left: 30px;
 }
-.gridLayout{
+
+.gridLayout {
     margin-left: 120px;
 }
 
-.innerTile{
+.innerTile {
     margin-top: 10px;
     margin-left: 15px;
 }
-.tile1{
-    margin-left: 35px;
-}
-.ClockMyTime{
-   
+
+.tile1 {
     margin-left: 35px;
 }
 
-.Workflows{
-   
+.ClockMyTime {
+
     margin-left: 35px;
 }
 
-.TimeOff{
-   
+.Workflows {
+
     margin-left: 35px;
 }
-.PayStatement{
-   
+
+.TimeOff {
+
     margin-left: 35px;
 }
-.ViewProfile{
-   
+
+.PayStatement {
+
     margin-left: 35px;
 }
-.ViewLearning{
+
+.ViewProfile {
+
     margin-left: 35px;
 }
-.ViewOrg{
-    
+
+.ViewLearning {
     margin-left: 35px;
 }
-.ViewLeaves{
-    
+
+.ViewOrg {
+
     margin-left: 35px;
 }
-.ViewReport{
-   
+
+.ViewLeaves {
+
     margin-left: 35px;
 }
-.ViewReportCenter{
-    
+
+.ViewReport {
+
     margin-left: 35px;
 }
-.ViewDocument{
-    
+
+.ViewReportCenter {
+
     margin-left: 35px;
 }
-.LearningAdministration{
-    
+
+.ViewDocument {
+
+    margin-left: 35px;
+}
+
+.LearningAdministration {
+
     margin-left: 35px;
 }
 
@@ -135,65 +167,144 @@
     padding-left: 50px;
     padding-bottom: 30px;
 }
-.ComboBoxText{
+
+.ComboBoxText {
     margin-left: 20px;
     text-align: center;
 }
 
 /* Time Tracking Style */
 
-.TimeLayout{
+.TimeLayout {
     margin-left: 30px;
     margin-top: 10px;
 }
-.label{
+
+.label {
     font-weight: bold;
     margin-top: 5px;
 }
-.dpDate{
+
+.dpDate {
     padding-left: 10px;
 }
-.tpStartDate{
+
+.tpStartDate {
     padding-left: 18px;
 }
-.tpEndDate{
+
+.tpEndDate {
     padding-left: 22px;
 }
-.inputTask{
+
+.inputTask {
     padding-left: 3px;
 }
-.textareaDescription{
+
+.textareaDescription {
     padding-left: 8px;
 }
-.formDataBtn{
+
+.formDataBtn {
     margin-top: 10px;
     margin-left: 30px;
     direction: rtl;
 }
-.CancelBtn{
+
+.CancelBtn {
     margin-right: 10px;
 }
-.timeEntryTitle{
+
+.timeEntryTitle {
     margin-top: 20px;
     margin-left: 30px;
 }
-.timeEntryTable{
+
+.timeEntryTable {
     margin-left: 30px;
 }
+
+.timeTrackingPage {
+    background-color: #f4f6f8;
+}
+
+.TimeLayout {
+    padding: 2rem;
+}
+
+.timeFormPanel {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.formVBox m\\:HBox {
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.formLabel {
+    width: 10rem;
+    /* font-weight: 600; */
+    font-size: 0.9rem;
+    color: #2c3e50;
+    margin-right: 1rem;
+}
+
+.formTextArea {
+    flex: 1;
+    font-size: 0.7rem;
+}
+
+/* .formTextArea {
+    width: 100%;
+    max-width: 90rem;
+    border-radius: 4px;
+} */
+
+.formDataBtn {
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.timeEntryTitle {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 0.6rem;
+}
+
+.timeEntryTable {
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+}
+
+.timeEntryTable .sapMColumnHeader {
+    background-color: #f0f0f0;
+    font-weight: 600;
+}
+
+.timeEntryTable .sapMLIB:nth-child(even) {
+    background-color: #fafafa;
+}
+
 
 /* Workflow Page Style */
 
 .mPage {
-    background-color: #f4f4f4; 
+    background-color: #f4f4f4;
 }
 
-.WPage{
+.WPage {
     padding: 5px;
 }
 
 
 #tasksTable {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     border-radius: 8px;
     margin-top: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -219,19 +330,58 @@
     width: 45%;
 }
 
+.workflowPage {
+    background-color: #f9f9f9;
+}
+
+.workflowScroll {
+    padding: 2rem;
+}
+
+.workflowVerticalLayout {
+    margin-bottom: 2rem;
+}
+
+.workflowTable {
+    margin-top: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.workflowTable .sapMColumnHeader {
+    font-weight: bold;
+    /* background-color: #f0f0f0; */
+}
+
+.workflowTable .sapMListTblCell {
+    padding: 0.75rem;
+}
+
+.workflowTable .sapMLIB:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.workflowTable .sapMLIB:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+
 /* Pay Slip Statement Style */
-.paylayout{
+.paylayout {
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
-    background-color:darkgray;
+    background-color: darkgray;
     border-radius: 10px;
 }
-.payContent{
+
+.payContent {
     margin-left: 30px;
 }
+
 .PayslipBtn {
-    
+
     font-weight: bold;
     border-radius: 8px;
     padding: 10px 20px;
@@ -248,7 +398,8 @@
     align-items: center;
     gap: 16px;
 }
-.ProfileHeadingTitle{
+
+.ProfileHeadingTitle {
     margin-left: 36rem;
 }
 
@@ -283,10 +434,11 @@
     padding: 4px 0;
     font-weight: bold;
 }
-.sectionTextValue{
+
+.sectionTextValue {
     font-size: 14px;
     padding: 4px;
-    
+
 }
 
 .sectionHeader {
@@ -298,7 +450,7 @@
 
 
 .learningPage {
-    background: #f4f4f4; 
+    background: #f4f4f4;
     padding: 1rem;
 }
 
@@ -382,7 +534,8 @@ body {
     border-radius: 10px;
     text-align: center;
 }
-.headingTitle{
+
+.headingTitle {
     margin-left: 34rem;
 }
 
@@ -395,7 +548,7 @@ body {
 
 .overviewSection {
     padding: 1.5rem;
-    
+
 }
 
 .overviewSection .sapMText {
@@ -444,30 +597,33 @@ body {
 }
 
 /* Leave page Style */
-.LeaveTitle{
+.LeaveTitle {
     margin-left: 34rem;
 }
-.LeaveForm{
-   margin-top: 10px;
+
+.LeaveForm {
+    margin-top: 10px;
 }
-.LeaveFormVertical{
+
+.LeaveFormVertical {
     margin-left: 10px;
 }
-.Reason{
+
+.Reason {
     margin-top: 10px;
 }
 
 /* View Tile Report */
 
-.TileGrid{
+.TileGrid {
     margin: auto;
 }
 
-.Tile1{
+.Tile1 {
     margin-left: 20px;
 }
 
-.Tile2{
+.Tile2 {
     margin-left: 20px;
     width: 15rem;
 }
