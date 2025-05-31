@@ -17,77 +17,75 @@
 					<layout:VerticalLayout>
 						<layout:Grid defaultSpan="L4 M4">
 							<layout:content>
-								<m:Text text="Workflow Name: {/WorkflowData/WorkflowName}" class="fCard" />
+								<m:Text text="Workflow Name: {WorkflowData>/0/WorkflowName}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Status: {/WorkflowData/Status}" class="fCard" />
+								<m:Text text="Status: {WorkflowData>/0/Status}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Assigned To: {/WorkflowData/AssignedTo}" class="fCard" />
+								<m:Text text="Assigned To: {WorkflowData>/0/AssignedTo}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Company: {/WorkflowData/Client}" class="fCard" />
+								<m:Text text="Company: {WorkflowData>/0/Client}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Start Date: {/WorkflowData/startDate}" class="fCard" />
+								<m:Text text="Start Date: {WorkflowData>/0/startDate}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="End Date: {/WorkflowData/endDate}" class="fCard" />
+								<m:Text text="End Date: {WorkflowData>/0/endDate}" class="fCard" />
 							</layout:content>
 						</layout:Grid>
 						<layout:Grid defaultSpan="L4 M4">
 							<layout:content>
-								<m:Text text="Technology: {/WorkflowData/Technology}" class="fCard" />
+								<m:Text text="Technology: {WorkflowData>/0/Technology}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Created By: {/WorkflowData/CreatedBy}" class="fCard" />
+								<m:Text text="Created By: {WorkflowData>/0/CreatedBy}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Last Updated: {/WorkflowData/LastUpdated}" class="fCard" />
+								<m:Text text="Last Updated: {WorkflowData>/0/LastUpdated}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Process Type: {/WorkflowData/ProcessType}" class="fCard" />
+								<m:Text text="Process Type: {WorkflowData>/0/ProcessType}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Approval Status: {/WorkflowData/ApprovalStatus}" class="fCard" />
+								<m:Text text="Approval Status: {WorkflowData>/0/ApprovalStatus}" class="fCard" />
 							</layout:content>
 							<layout:content>
-								<m:Text text="Description: {/WorkflowData/Description}" class="fCard" />
+								<m:Text text="Description: {WorkflowData>/0/Description}" class="fCard" />
 							</layout:content>
 						</layout:Grid>
 					</layout:VerticalLayout>
-					<m:Table headerText="Workflow Steps" items="{/WorkflowData/Steps}">
-						<m:columns>
-					    	<m:Column class="sapUiTableHdr">
-								<m:Text text="Step Name"/>
-							</m:Column>
-							<m:Column >
-								<m:Text text="Status"/>
-							</m:Column>
-							<m:Column >
-								<m:Text text="Assigned To"/>
-							</m:Column>
-                            <m:Column>
-								<m:Text text="Documents"/>
-							</m:Column>
-						</m:columns>
-						<m:items>
-							<m:ColumnListItem>
-								<m:cells >
-									<m:Text text="{Step}"/>
-									<m:Text text="{Status}"/>
-									<m:Text text="{AssignedTo}"/>
-                                    <m:List items="{Documents}">
+					<m:VBox class="sapUiSmallMargin sapUiMediumMarginTop">
+                    <m:Title text="Workflow Steps" level="H3" class="sapUiTinyMarginBottom"/>
+                    <m:Table items="{StepsModel>/}" growing="true" growingScrollToLoad="true" class="workflowTable">
+                        <m:columns>
+                            <m:Column><m:Text text="Step Name"/></m:Column>
+                            <m:Column><m:Text text="Status"/></m:Column>
+                            <m:Column><m:Text text="Assigned To"/></m:Column>
+                            <m:Column><m:Text text="Documents"/></m:Column>
+                        </m:columns>
+                        <m:items>
+                            <m:ColumnListItem>
+                                <m:cells>
+                                    <m:Text text="{StepsModel>Step}"/>
+                                    <m:Text text="{StepsModel>Status}"/>
+                                    <m:Text text="{StepsModel>AssignedTo}"/>
+                                    <m:VBox>
+                                        <m:List items="{StepsModel>documents/results}" showSeparators="Inner" mode="None">
                                             <m:items>
-                                                <m:StandardListItem title="{Name}" 
-                                                                    description="Type: {Type}, Uploaded By: {UploadedBy}" 
-                                                                    icon="sap-icon://process" />
+                                                <m:StandardListItem title="{StepsModel>Name}"
+                                                    description="Type: {StepsModel>Type}, Uploaded By: {StepsModel>UploadedBy}"
+                                                    icon="sap-icon://attachment"
+                                                    iconInset="false" />
                                             </m:items>
-                                           </m:List>
-								</m:cells>
-							</m:ColumnListItem>
-						</m:items>
-					</m:Table>
+                                        </m:List>
+                                    </m:VBox>
+                                </m:cells>
+                            </m:ColumnListItem>
+                        </m:items>
+                    </m:Table>
+                </m:VBox>
 				</m:content>
 			</m:ScrollContainer>
 	</m:Page>    

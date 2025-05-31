@@ -2,34 +2,84 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
     xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
     controllerName="smartdesk.controller.PayStatement">
 
     <m:Page title="Pay Slip Statement" titleAlignment="Center">
         <m:content>
-            <m:Panel class="fPanel" headerText="Payslip ( {/oPaySlip/month} )">
-                <layout:Grid defaultSpan="L4 M4">
-                    <layout:content>
-                        <m:Text text="Employee Name : {/oPaySlip/employeeName}"/>
-                        <m:Text text="Employee ID : {/oPaySlip/employeeID}"/>
-                        <m:Text text="Department : {/oPaySlip/department}"/>
-                        <m:Text text="Position : {/oPaySlip/position}"/>
-                        <m:Text text="Pay Period : {/oPaySlip/month}"/>
-                        <m:Text text="Pay Date : {/oPaySlip/payDate}"/>
-                        <m:Text text="Basic Salary : {/oPaySlip/basicSalary}"/>
-                        <m:Text text="Bonus : {/oPaySlip/bonus}"/>
-                        <m:Text text="Allowances : {/oPaySlip/allowances}"/>
-                        <m:Text text="Tax Deduction : {/oPaySlip/taxDeduction}"/>
-                        <m:Text text="Provident Fund : {/oPaySlip/providentFund}"/>
-                        <m:Text text="Other Deductions : {/oPaySlip/otherDeductions}"/>
-                        <m:Text text="Total Earnings : {/oPaySlip/totalEarnings}"/>
-                        <m:Text text="Total Deductions : {/oPaySlip/totalDeductions}"/>
-                        <m:Text text="Net Pay (After Deductions) : {/oPaySlip/netPay}" class="boldText"/>
-                    </layout:content>
-                </layout:Grid>
-                <m:Button text=" Download Pay Slip" 
-                      icon="sap-icon://download" 
-                      press="onDownloadPaySlip" 
-                      class="PayslipBtn"/>
+            <m:Panel class="fPanel" headerText="Payslip Statement: {oPaySlip>/month}" expandable="true" expanded="true">
+                
+                <form:SimpleForm
+                    id="PayslipForm"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="3"
+                    labelSpanM="4"
+                    adjustLabelSpan="false"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1">
+
+                    <core:Title text="Employee Details" />
+                    <m:Label text="Employee Name" />
+                    <m:Text text="{oPaySlip>/EmployeeName}" />
+
+                    <m:Label text="Employee ID" />
+                    <m:Text text="{oPaySlip>/EmployeeID}" />
+
+                    <m:Label text="Department" />
+                    <m:Text text="{oPaySlip>/Department}" />
+
+                    <m:Label text="Position" />
+                    <m:Text text="{oPaySlip>/Position}" />
+
+                    <core:Title text="Payment Info" />
+                    <m:Label text="Pay Period" />
+                    <m:Text text="{oPaySlip>/Month}" />
+
+                    <m:Label text="Pay Date" />
+                    <m:Text text="{oPaySlip>/PayDate}" />
+
+                    <m:Label text="Basic Salary" />
+                    <m:Text text="{oPaySlip>/BasicSalary}" />
+
+                    <m:Label text="Bonus" />
+                    <m:Text text="{oPaySlip>/Bonus}" />
+
+                    <m:Label text="Allowances" />
+                    <m:Text text="{oPaySlip>/Allowances}" />
+
+                    <core:Title text="Deductions" />
+                    <m:Label text="Tax Deduction" />
+                    <m:Text text="{oPaySlip>/TaxDeduction}" />
+
+                    <m:Label text="Provident Fund" />
+                    <m:Text text="{oPaySlip>/ProvidentFund}" />
+
+                    <m:Label text="Other Deductions" />
+                    <m:Text text="{oPaySlip>/OtherDeductions}" />
+
+                    <core:Title text="Summary" />
+                    <m:Label text="Total Earnings" />
+                    <m:Text text="{oPaySlip>/TotalEarnings}" />
+
+                    <m:Label text="Total Deductions" />
+                    <m:Text text="{oPaySlip>/TotalDeductions}" />
+
+                    <m:Label text="Net Pay (After Deductions)" />
+                    <m:ObjectStatus text="{oPaySlip>/NetPay}" state="Success" />
+
+                </form:SimpleForm>
+
+                <m:Toolbar>
+                    <m:ToolbarSpacer />
+                    <m:Button text="Download Pay Slip"
+                        icon="sap-icon://download"
+                        press="onDownloadPaySlip"
+                        type="Emphasized"
+                        class="PayslipBtn" />
+                </m:Toolbar>
+
             </m:Panel>
         </m:content>
     </m:Page>

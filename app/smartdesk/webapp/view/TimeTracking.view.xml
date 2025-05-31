@@ -16,23 +16,23 @@
             <layout:VerticalLayout class="TimeLayout" busyIndicatorSize="Large">
                     <m:HBox >
                         <m:Label text="Select Date: " class="label"/>
-                        <m:DatePicker id="dpDate" value="{/TimeTracking/date}" width="100%" class="dpDate"/>
+                        <m:DatePicker id="dpDate" width="100%" class="dpDate"/>
                     </m:HBox>
                     <m:HBox>
                         <m:Label text="Start Date: " class="label"/>
-                        <m:DatePicker id="tpStartDate" value="{/TimeTracking/startDate}" width="100%" class="tpStartDate"/>
+                        <m:DatePicker id="tpStartDate"  width="100%" class="tpStartDate"/>
                     </m:HBox>
                     <m:HBox>
                         <m:Label text="End Date: " class="label"/>
-                        <m:DatePicker id="tpEndTime" value="{/TimeTracking/endDate}" width="100%" class="tpEndDate"/>
+                        <m:DatePicker id="tpEndTime" width="100%" class="tpEndDate"/>
                     </m:HBox>
                     <m:HBox>
                         <m:Label text="Project/Task: " class="label"/>
-                        <m:Input id="inputTask" value="{/TimeTracking/task}" width="30rem" class="inputTask"/>
+                        <m:Input id="inputTask"  width="30rem" class="inputTask"/>
                     </m:HBox>
                     <m:HBox>
                         <m:Label text="Description: " class="label"/>
-                        <m:TextArea id="textareaDescription" value="{/TimeTracking/description}" width="50rem" rows="5" class="textareaDescription"/>
+                        <m:TextArea id="textareaDescription" width="50rem" rows="5" class="textareaDescription"/>
                     </m:HBox>
             </layout:VerticalLayout>
 
@@ -44,34 +44,35 @@
             <m:Title level="H2" text="Previous Entries" class="timeEntryTitle"/>
             
                <m:Table  id="timeEntryTable" 
-                         width="100%" 
-                         class="timeEntryTable"
-                         items="{/aNewArrayEntries}">
-               <m:columns>
-                   <m:Column>
-                      <m:Text text="Date"/>
-                   </m:Column>
-                   <m:Column>
-                      <m:Text text="Project/Task"/>
-                   </m:Column>
-                   <m:Column>
-                      <m:Text text="Start Date"/>
-                   </m:Column>
-                   <m:Column>
-                      <m:Text text="End Date"/>
-                   </m:Column>
-               </m:columns>
-               <m:items >
-                  <m:ColumnListItem>
-                     <m:cells>
-                        <m:Text text="{Date}"/>
-                        <m:Text text="{task}"/>
-                        <m:Text text="{startDate}"/>
-                        <m:Text text="{endDate}"/>
-                     </m:cells>
-                  </m:ColumnListItem>
-               </m:items>
+                    width="100%" 
+                    class="timeEntryTable"
+                    items="{/TimeTracking}">
+                <m:columns>
+                    <m:Column>
+                        <m:Text text="Date"/>
+                    </m:Column>
+                    <m:Column>
+                        <m:Text text="Project/Task"/>
+                    </m:Column>
+                    <m:Column>
+                        <m:Text text="Start Date"/>
+                    </m:Column>
+                    <m:Column>
+                        <m:Text text="End Date"/>
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem>
+                        <m:cells>
+                            <m:Text text="{date}"/>
+                            <m:Text text="{task}"/>
+                            <m:Text text="{startDate}"/>
+                            <m:Text text="{endDate}"/>
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
             </m:Table>
+
         </m:content> 
     </m:Page>
 
