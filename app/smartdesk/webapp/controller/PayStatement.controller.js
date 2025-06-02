@@ -45,7 +45,7 @@ sap.ui.define([
             
             // var oData = oModel.getProperty();
             
-            // console.log("Pay Slip Data: ", oData.oModel.oData);
+            // console.log("Pay Slip Data: ", this._oMonth);
 
             // if (!oData) {
             //     MessageToast.show("Error: Pay Slip data is missing!");
@@ -60,7 +60,7 @@ sap.ui.define([
                 Employee ID: ${oModel.oData.EmployeeID}\n
                 Department: ${oModel.oData.Department}\n
                 Position: ${oModel.oData.Position}\n
-                Pay Date: ${oModel.oData.PayDate}\n
+                Pay Date: ${this._oMonth}\n
                 ---------------------------------------\n
                 Earnings:\n
                 - Basic Salary: ${oModel.oData.BasicSalary}\n

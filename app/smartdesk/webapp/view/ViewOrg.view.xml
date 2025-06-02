@@ -15,8 +15,8 @@
         <f:header>
             <f:DynamicPageHeader>
                 <m:VBox class="headerSection">
-                    <m:Text text="Welcome to {/oOrgData/companyName}" class="titleText"/>
-                    <m:Text text="IT Service &amp; Consulting | Established {/oOrgData/foundedYear} | {/oOrgData/headquarters}" />
+                    <m:Text text="Welcome to {oOrgData>/companyName}" class="titleText"/>
+                    <m:Text text="IT Service &amp; Consulting | Established {oOrgData>/foundedYear} | {oOrgData>/headquarters}" />
                 </m:VBox>
             </f:DynamicPageHeader>
         </f:header>
@@ -28,11 +28,11 @@
                     <m:Panel headerText="Organisation Overview:" class="sectionPanel">
                         <m:HBox justifyContent="SpaceBetween" class="overviewSection">
                             <m:VBox>
-                                <m:ObjectHeader title="INKIT Solutions" number="500+" numberUnit="Employees">
+                                <m:ObjectHeader title="{oOrgData>/companyName}" number="500+" numberUnit="Employees">
                                     <m:attributes>
                                         <m:ObjectAttribute title="Industry" text="IT Services &amp; Consulting"/>
-                                        <m:ObjectAttribute title="Founded" text="2014"/>
-                                        <m:ObjectAttribute title="Headquarters" text="Melbourne, VIC"/>
+                                        <m:ObjectAttribute title="Founded" text="{oOrgData>/foundedYear}"/>
+                                        <m:ObjectAttribute title="Headquarters" text="{oOrgData>/headquarters}"/>
                                     </m:attributes>
                                 </m:ObjectHeader>
                             </m:VBox>
@@ -42,27 +42,20 @@
                         </m:HBox>
                     </m:Panel>
 
-                    <m:Panel headerText="Departments:">
-                        <m:HBox justifyContent="SpaceBetween">
-                            <m:Panel headerText="{/oOrgData/departments/0/name}" class="departmentCard">
-                                <m:VBox>
-                                    <m:Text text="{/oOrgData/departments/0/description}"/>
+                    <m:Panel headerText="Departments:" class="sapUiResponsiveMargin">
+                        <m:FlexBox                 
+                            direction="Row"               
+                            items="{department>/}"
+                            class="departmentFlexBox">
+
+                            <m:Panel headerText="{department>name}" class="departmentCard" width="250px">
+                                <m:VBox class="sapUiSmallMargin">
+                                    <m:Text text="{department>description}" class="sapUiTinyMarginBottom"/>
                                     <m:Button text="View Team" press="onViewDepartment"/>
                                 </m:VBox>
                             </m:Panel>
-                            <m:Panel headerText="{/oOrgData/departments/1/name}" class="departmentCard">
-                                <m:VBox>
-                                    <m:Text text="{/oOrgData/departments/1/description}"/>
-                                    <m:Button text="View Team" press="onViewDepartment"/>
-                                </m:VBox>
-                            </m:Panel>
-                            <m:Panel headerText="{/oOrgData/departments/2/name}" class="departmentCard">
-                                <m:VBox>
-                                    <m:Text text="{/oOrgData/departments/2/description}"/>
-                                    <m:Button text="View Team" press="onViewDepartment"/>
-                                </m:VBox>
-                            </m:Panel>
-                        </m:HBox>
+
+                        </m:FlexBox>
                     </m:Panel>
 
                     <m:Panel class="sectionPanel">
@@ -73,12 +66,12 @@
                                          placeholder="Search Employee..."
                                          liveChange="onSearchEmployee"/>
                         </m:Toolbar>
-                        <m:List id="employeeList" items="{/oOrgData/employees}" class="employeeList">
+                        <m:List id="employeeList" items="{employee>/}" class="employeeList">
                             <m:ObjectListItem 
-                                title="{name}" 
+                                title="{employee>name}" 
                                 icon="sap-icon://employee" 
                                 number="Employee"
-                                numberUnit="{designation}"/>
+                                numberUnit="{employee>designation}"/>
                         </m:List>
                     </m:Panel>
 

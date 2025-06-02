@@ -1,32 +1,78 @@
-<mvc:View controllerName="smartdesk.controller.ViewLearning"
+<mvc:View
+    controllerName="smartdesk.controller.ViewLearning"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    
-    <Page title="My Learning" titleAlignment="Center" class="learningPage">
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        title="My Learning"
+        titleAlignment="Center"
+        class="learningPage"
+    >
         <content>
-            <Panel class="learningPanel">
+            <VBox class="sapUiSmallMargin learningHeaderBox">
+                <Title
+                    text="Welcome, MD. Tausif Alam !"
+                    level="H2"
+                    class="learningWelcomeTitle"
+                />
+                <HBox>
+                    <Text text="Total Enrolled Courses: " />
+                    <Text
+                        text="{=  ${/Course}.length } courses."
+                        class="learningCourseCount"
+                    />
+                </HBox>
+            </VBox>
+
+            <Panel
+                class="learningPanel"
+                headerText="Available Courses"
+            >
                 <Toolbar class="learningToolbar">
-                   <Title text="Courses" class="learningTitle"/>
-                   <ToolbarSpacer />
-                   <SearchField width="250px"
-                                placeholder="Search courses..."
-                                liveChange="onSearch"
-                                class="learningSearch"/>
+                    <Title
+                        text="Courses"
+                        class="learningTitle"
+                    />
+                    <ToolbarSpacer />
+                    <SearchField
+                        width="250px"
+                        placeholder="Search courses..."
+                        liveChange="onSearch"
+                        class="learningSearch"
+                    />
                 </Toolbar>
-                <List id="learningList" items="{/learningData}" class="learningList">
-                    <ObjectListItem title="{title}" 
-                                    intro="{category}" 
-                                    number="{progress}%" 
-                                    numberState="Information"
-                                    class="learningListItem">
-                        <attributes>
-                            <ObjectAttribute text="{duration} mins" class="learningDuration"/>
-                        </attributes> 
-                    </ObjectListItem>    
-                </List>  
-            </Panel> 
-        </content>    
+
+                <List
+                    id="learningList"
+                    items="{/Course}"
+                    class="learningList"
+                >
+                    <CustomListItem>
+                        <VBox class="learningListItemBox">
+                            <Text
+                                text="{title}"
+                                class="learningTitleText"
+                            />
+                            <HBox justifyContent="SpaceBetween">
+                                <Text
+                                    text="{category}"
+                                    class="learningCategoryText"
+                                />
+                                <Text
+                                    text="{duration} mins"
+                                    class="learningDurationText"
+                                />
+                            </HBox>
+                            <Text
+                                text="{progress}% Complete"
+                                class="learningProgressText"
+                            />
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </Panel>
+        </content>
     </Page>
 </mvc:View>

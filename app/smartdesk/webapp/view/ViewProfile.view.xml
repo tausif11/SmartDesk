@@ -3,72 +3,75 @@
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
-    xmlns:layout="sap.ui.layout"
+    xmlns:layout="sap.ui.layout.form"
     controllerName="smartdesk.controller.ViewProfile">
-    
+
     <m:Page>
         <m:content>
             <f:DynamicPage>
                 <f:title>
                     <f:DynamicPageTitle>
                         <f:heading>
-                            <m:Title text="User Profile" class="ProfileHeadingTitle"/>
+                            <m:Title text="User Profile" class="sapUiTinyMarginBottom ProfileHeadingTitle" level="H1"/>
                         </f:heading>
                     </f:DynamicPageTitle>
                 </f:title>
+
                 <f:header>
                     <f:DynamicPageHeader>
-                        <m:HBox class="profileHeader">
-                            <m:Avatar src="sap-icon://customer" displayShape="Circle" class="profileAvatar"/>
-                            <m:VBox class="profileInfo">
-                                <m:Title text="{/oUserProfile/fullName}" level="H2" class="profileInfoTitle"/>
-                                <m:Text text="Designation: {/oUserProfile/position}" class="profileInfoText"/>
-                                <m:Text text="Department: {/oUserProfile/department}" class="profileInfoText"/>
+                        <m:HBox class="profileHeader" justifyContent="Start" alignItems="Center" width="100%">
+                            <m:Avatar src="sap-icon://customer" displayShape="Circle" displaySize="L" class="sapUiSmallMarginEnd profileAvatar"/>
+                            <m:VBox class="profileInfo" renderType="Bare" width="100%">
+                                <m:Title text="{oProfile>/fullName}" level="H2" class="profileInfoTitle"/>
+                                <m:Text text="Designation: {oProfile>/position}" class="profileInfoText"/>
+                                <m:Text text="Department: {oProfile>/department}" class="profileInfoText"/>
                             </m:VBox>
                         </m:HBox>
                     </f:DynamicPageHeader>
                 </f:header>
+
                 <f:content>
-                 <m:ScrollContainer>
-                    <m:Panel headerText="Personal Information:" class="sectionPanel">
-                        <m:VBox>
-                            <m:HBox>
-                                <m:Text text="Email: " class="sectionText"/>
-                                <m:Text text="{/oUserProfile/email}" class="sectionTextValue"/>
-                            </m:HBox>
-                            <m:HBox>
-                                <m:Text text="Phone: " class="sectionText"/>
-                                <m:Text text="{/oUserProfile/phone}" class="sectionTextValue"/>
-                            </m:HBox>
-                            <m:HBox>
-                                <m:Text text="DOB: " class="sectionText"/>
-                                <m:Text text="{/oUserProfile/dob}" class="sectionTextValue"/>
-                            </m:HBox>
-                        </m:VBox>
-                    </m:Panel>
-                    <m:Panel headerText="Job Information:" class="sectionPanel">
-                        <m:VBox>
-                            <m:HBox>
-                                <m:Text text="Employee ID:" class="sectionText"/>
-                                <m:Text text="{/oUserProfile/employeeID}" class="sectionTextValue"/>
-                            </m:HBox>
-                            <m:HBox>
-                                <m:Text text="Department: " class="sectionText"/>
-                                <m:Text text="{/oUserProfile/department}" class="sectionTextValue"/>
-                            </m:HBox>
-                            <m:HBox>
-                                <m:Text text="Joining Date: " class="sectionText"/>
-                                <m:Text text="{/oUserProfile/joiningDate}" class="sectionTextValue"/>
-                            </m:HBox>
-                        </m:VBox>
-                    </m:Panel>
-                    <m:Panel headerText="Project Information:" class="sectionPanel">
-                        <m:List items="{/oUserProfile/projects}">
-                            <m:StandardListItem title="{projectName}" 
-                                                description="Role: {role}, Duration: {duration}" />
+                    <m:ScrollContainer height="100%" vertical="true">
+                        <!-- Personal Info -->
+                        <m:Panel headerText="Personal Information" class="sectionPanel sapUiResponsiveMargin">
+                            <layout:SimpleForm layout="ResponsiveGridLayout" editable="false">
+                                <m:Label text="Email"/>
+                                <m:Text text="{oProfile>/email}"/>
+                                <m:Label text="Phone"/>
+                                <m:Text text="{oProfile>/phone}"/>
+                                <m:Label text="DOB"/>
+                                <m:Text text="{oProfile>/dob}"/>
+                            </layout:SimpleForm>
+                        </m:Panel>
+
+                        <!-- Job Info -->
+                        <m:Panel headerText="Job Information" class="sectionPanel sapUiResponsiveMargin">
+                            <layout:SimpleForm layout="ResponsiveGridLayout" editable="false">
+                                <m:Label text="Employee ID"/>
+                                <m:Text text="{oProfile>/employeeID}"/>
+                                <m:Label text="Department"/>
+                                <m:Text text="{oProfile>/department}"/>
+                                <m:Label text="Joining Date"/>
+                                <m:Text text="{oProfile>/joiningDate}"/>
+                            </layout:SimpleForm>
+                        </m:Panel>
+
+                        <!-- Project Info -->
+                        <m:Panel headerText="Project Information" class="sectionPanel sapUiResponsiveMargin">
+                        <m:List items="{oProjects>/}" inset="false">
+                            <m:CustomListItem>
+                                <m:HBox justifyContent="Start" alignItems="Center" class="projectListItem">
+                                    <m:VBox class="projectListText">
+                                        <m:Title text="{oProjects>projectName}" level="H5"/>
+                                        <m:Text text="Role: {oProjects>role}" class="projectSubText"/>
+                                        <m:Text text="Duration: {oProjects>duration}" class="projectSubText"/>
+                                    </m:VBox>
+                                </m:HBox>
+                            </m:CustomListItem>
                         </m:List>
                     </m:Panel>
-                   </m:ScrollContainer> 
+
+                    </m:ScrollContainer>
                 </f:content>
             </f:DynamicPage>
         </m:content>

@@ -406,6 +406,9 @@
 .profileHeader {
     align-items: center;
     gap: 16px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 6px;
 }
 
 .ProfileHeadingTitle {
@@ -423,37 +426,54 @@
 }
 
 .profileInfoTitle {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
 }
 
 .profileInfoText {
-    font-size: 14px;
-    color: #666;
+   color: #666;
 }
 
 .sectionPanel {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 12px;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 6px;
 }
 
 .sectionText {
     font-size: 14px;
-    padding: 4px 0;
     font-weight: bold;
 }
 
 .sectionTextValue {
-    font-size: 14px;
-    padding: 4px;
-
+    font-weight: bold;
 }
 
 .sectionHeader {
     font-weight: bold;
     font-size: 16px;
 }
+
+.projectListItem {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.projectListText {
+    width: 100%;
+}
+
+.projectListText > .sapMTitle {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.projectSubText {
+    color: #555;
+    font-size: 0.875rem;
+    margin-bottom: 0.1rem;
+}
+
 
 /* view learning style */
 
@@ -520,8 +540,55 @@
 
     .learningTitle {
         font-size: 1.2rem;
+        color: #007bff;
     }
 }
+
+.learningTitleText {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #0a6ed1; /* SAP primary blue */
+    margin-bottom: 0.2rem;
+}
+
+.learningCategoryText {
+    color: #555;
+}
+
+.learningDurationText {
+    color: #888;
+}
+
+.learningProgressText {
+    color: #107e3e; /* SAP positive green */
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.learningListItemBox {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+.learningHeaderBox {
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+}
+
+.learningWelcomeTitle {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2907a7;
+}
+
+.learningCourseCount {
+    color: #2907a7;
+    font-size: 1.5rem;
+}t
+
 
 
 /* view Org style */
@@ -588,6 +655,7 @@ body {
     color: #fff;
     text-align: center;
     transition: transform 0.3s ease-in-out;
+    margin: 1.5rem;
 }
 
 .departmentCard:hover {

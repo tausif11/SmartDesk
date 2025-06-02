@@ -1,53 +1,51 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
+    "sap/ui/model/odata/v2/ODataModel",
      "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel"
-], function (Controller,Filter, FilterOperator, JSONModel) {
+], function (Controller,Filter, ODataModel, FilterOperator, JSONModel) {
     "use strict";
 
     return Controller.extend("smartdesk.controller.ViewOrg", {
         onInit: function () {
-            var oModel = new JSONModel();
-            this.getView().setModel(oModel);
+            const oODataModel = new ODataModel("/v2/odata/v4/smart-desk/",{
+                  json: true
+            });
             
-            var oOrgData = {
-                companyName: "INKIT Solutions",
-                foundedYear: "2014",
-                headquarters: "Melbourne, VIC",
-                employeeCount: "500+",
-                departments: [
-                    { 
-                        name: "Technology", 
-                        description: "SAP BTP, ABAP, UI5 and Integration" 
-                    },
-                    { 
-                        name: "HR & Admin", 
-                        description: "Employee Relations & Payroll" 
-                    },
-                    { 
-                        name: "Sales & Marketing", 
-                        description: "Lead Generation & Client Relations" 
-                    }
-                ],
-                employees: [
-                    { 
-                        name: "Md. Tausif Alam", 
-                        designation: "Associate Consultant" 
-                    },
-                    { 
-                        name: "Aman Garg", 
-                        designation: "HR Manager" 
-                    },
-                    { 
-                        name: "Shiv Krishnan", 
-                        designation: "Marketing Lead" 
-                    }
-                ]
-            }
+            oODataModel.read("/Organisation",{
+                urlParameters: {
+                "$expand": "departments,employees"
+                },
+                success: (data) => {
+                    console.log(data);
 
-            oModel.setProperty("/oOrgData",oOrgData);
-            
+                    var oOrgData = data.results[0];
+                    var oModel = new JSONModel(oOrgData);
+
+                    var oView = this.getView().setModel(oModel,"oOrgData");
+                    // console.log(oView);
+
+                    var oDepartment = oView.oModels.oOrgData.oData.departments.results;
+                    // console.log(oDepartment)
+
+                    var oDepartmentModel = new JSONModel(oDepartment);
+                    var oDept = this.getView().setModel(oDepartmentModel,"department");
+                    // console.log(oDept);
+
+                    var oEmployee = oView.oModels.oOrgData.oData.employees.results;
+                    console.log(oEmployee)
+
+                    var oEmployeeModel = new JSONModel(oEmployee);
+                    var oEmp = this.getView().setModel(oEmployeeModel,"employee");
+                    console.log(oEmp);
+                    
+
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            })
         },
 
         onViewDepartment: function (oEvent) {

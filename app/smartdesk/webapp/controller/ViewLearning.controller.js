@@ -1,44 +1,31 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
+    "sap/ui/model/odata/v2/ODataModel",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
-], function (Controller, JSONModel,Filter,FilterOperator) {
+], function (Controller, JSONModel, ODataModel, Filter,FilterOperator) {
     "use strict";
 
     return Controller.extend("smartdesk.controller.ViewLearning", {
         onInit: function () {
-            var oData = {
+             const oODataModel = new ODataModel("/v2/odata/v4/smart-desk/",{
+                  json: true
+            });
 
-                learningData: [
-                    { 
-                        title: "SAP UI5/FIORI", 
-                        category: "Development", 
-                        duration: "120", 
-                        progress: 50 
-                    },
-                    { 
-                        title: "SAP Build Apps", 
-                        category: "Application Development", 
-                        duration: "90", 
-                        progress: 80 
-                    },
-                    { 
-                        title: "SAP BTP", 
-                        category: "Cloud", 
-                        duration: "90", 
-                        progress: 80 
-                    },
-                    { 
-                        title: "SAP Build Process Automation (BPA)", 
-                        category: "Workflow", 
-                        duration: "60", 
-                        progress: 30 
-                    }
-                ]
-            };
-            var oModel = new JSONModel(oData);
-            this.getView().setModel(oModel);
+            oODataModel.read("/Course", {
+                success: (data) => {
+                    const aCourses = data.results;
+                    const oJSONModel = new JSONModel({
+                        Course: aCourses
+                    });
+
+                    this.getView().setModel(oJSONModel);
+                },
+                error: (err) => {
+                    console.error("OData Read Error:", err);
+                }
+            });
         },
 
         onSearch: function (oEvent) {

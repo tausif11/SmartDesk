@@ -1,4 +1,5 @@
 ID,name,description,org_ID
 dept-0001,Technology,"SAP BTP, ABAP, UI5 and Integration",org-000001
-dept-0002,HR & Admin,"Employee Relations & Payroll",org-000001
+dept-0002,HR and Employee Central,"HR Operations, Employee Central, Payroll",org-000001
 dept-0003,Sales & Marketing,"Lead Generation & Client Relations",org-000001
+dept-0004,Functional,"SAP Functional Modules (MM, SD, FI, CO)",org-000001
