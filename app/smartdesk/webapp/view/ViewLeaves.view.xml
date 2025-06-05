@@ -28,9 +28,9 @@
                             <m:VBox>
                                 <m:Title text="Remaining Leaves " level="H2"/>
                                 <m:VBox>
-                                   <m:Text text="Casual Leaves: {/oLeaveData/Casual}"/>
-                                   <m:Text text="Paid Leaves: {/oLeaveData/Paid}"/>
-                                   <m:Text text="Sick Leaves: {/oLeaveData/Sick}"/>
+                                   <m:Text text="Casual Leaves: {Leave>/casualLeave}"/>
+                                   <m:Text text="Paid Leaves: {Leave>/paidLeave}"/>
+                                   <m:Text text="Sick Leaves: {Leave>/sickLeave}"/>
                                 </m:VBox>
                             </m:VBox>
                         </f:DynamicPageHeader>

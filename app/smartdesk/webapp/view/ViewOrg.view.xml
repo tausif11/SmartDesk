@@ -73,6 +73,12 @@
                                 number="Employee"
                                 numberUnit="{employee>designation}"/>
                         </m:List>
+                        <m:HBox justifyContent="End" class="sapUiSmallMarginTop">
+                            <m:Button id="btnPrevious" text="Previous" press="onPreviousPage"/>
+                            <m:Text class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+                            <m:Button id="btnNext" text="Next" press="onNextPage"/>
+                        </m:HBox>
+
                     </m:Panel>
 
                     <!-- New Company Values Section -->
@@ -89,7 +95,7 @@
                     </m:Panel> -->
 
                     <!-- New Leadership Team Section -->
-                    <m:Panel headerText="Leadership Team: " class="sectionPanel">
+                    <!-- <m:Panel headerText="Leadership Team: " class="sectionPanel">
                         <m:VBox>
                             <m:Text text="Meet the leaders who drive our organisation forward."/>
                             <m:List>
@@ -110,10 +116,10 @@
                                 </m:ObjectListItem>
                             </m:List>
                         </m:VBox>
-                    </m:Panel>
+                    </m:Panel> -->
 
                     <!-- New Partner Network Section -->
-                    <m:Panel headerText="Partner Network: " class="sectionPanel">
+                    <!-- <m:Panel headerText="Partner Network: " class="sectionPanel">
                         <m:VBox>
                             <m:Text text="Our key strategic partners and collaborators."/>
                             <m:List>
@@ -123,17 +129,18 @@
                                 <m:ObjectListItem title="Oracle" />
                             </m:List>
                         </m:VBox>
-                    </m:Panel>
+                    </m:Panel> -->
                 </m:VBox>
             </m:ScrollContainer>
         </f:content>
+        
         <f:footer>
-            <tnt:ToolHeader>
-                <m:Text text="© 2025 INKIT Solutions. All Rights Reserved."></m:Text>
-               <m:ToolbarSpacer />
-                
-            </tnt:ToolHeader>
+            <m:Toolbar style="Clear" design="Transparent">
+                <m:Text text="© 2025 INKIT Solutions. All Rights Reserved." class="footerText"/>
+                <m:ToolbarSpacer />
+            </m:Toolbar>
         </f:footer>
+
     </f:DynamicPage>
 
 </mvc:View>

@@ -1,33 +1,31 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
+	"sap/ui/model/odata/v2/ODataModel",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageToast"
-], function(Controller, JSONModel, MessageToast) {
+], function(Controller, ODataModel, JSONModel, MessageToast) {
 	"use strict";
 
 	return Controller.extend("smartdesk.controller.ViewLeaves", {
 
 		onInit: function() {
-			var oModel = new JSONModel();
-			this.getView().setModel(oModel);
+			const oODataModel = new ODataModel("/v2/odata/v4/smart-desk/",{
+                 json:true
+			});
 
-			var oLeaveData = {
-				Casual       : 9,
-				Paid         : 15,
-				Sick         : 10,
-				startDate    : null,
-				endDate      : null,
-				numberOfDays : "",
-				note         : "",
-				leavesData   : []
-			};
+			oODataModel.read("/Leave",{
+                 success: (data) =>{
+					// console.log(data);
+					var oModel = data.results;
+					console.log(oModel);
 
-			var oNewArray = {
-				leavesData: []
-			}
-
-			oModel.setProperty("/oNewArray", oNewArray);
-			oModel.setProperty("/oLeaveData", oLeaveData);
+					var oJsonModel = new JSONModel(oModel);
+					this.getView().setModel(oJsonModel,"Leave");
+				 },
+				 error: (err) =>{
+					console.log(err);
+				 }
+			})
 		},
 
 		onApplyLeave: function() {

@@ -604,73 +604,83 @@ body {
     background-color: #ffffff;
 }
 
-/* Header Section */
 .headerSection {
-    padding: 1rem;
+    padding: 2rem 1rem;
     border-radius: 10px;
     text-align: center;
+    background-color: #eaf3fc;
 }
 
 .headingTitle {
     margin-left: 34rem;
+    font-size: 2rem;
 }
 
 .titleText {
-    margin-top: -50px;
     font-size: 1.5rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
+.sectionPanel {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
 .overviewSection {
-    padding: 1.5rem;
-
-}
-
-.overviewSection .sapMText {
-    font-size: 1rem;
-    color: #555;
-}
-
-.employeeList {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-
-.orgChartList {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 
 .departmentCard {
-    width: 30%;
-    padding: 1.5rem;
+    width: 250px;
+    margin: 1rem;
     border-radius: 12px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #007bff 20%, #00c3ff 100%);
-    color: #fff;
-    text-align: center;
+    background: linear-gradient(135deg, #007bff, #00c3ff);
+    color: rgb(10, 236, 218);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease-in-out;
-    margin: 1.5rem;
 }
 
 .departmentCard:hover {
     transform: scale(1.05);
 }
 
-.departmentCard .sapMText {
-    font-weight: bold;
+.departmentCard .sapMButton {
+    background-color: #ffffff !important;
+    color: #007bff !important;
+    border-radius: 4px;
 }
 
-.departmentCard .sapMButton {
-    background-color: #ffffff;
-    color: #007bff;
-    border-radius: 5px;
-    margin-top: 10px;
+.departmentFlexBox {
+    padding: 1rem;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.employeeList {
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.sapMListTblCell, .sapMLIB {
+    padding: 0.75rem 1rem;
+}
+
+.sapUiSmallMarginTop {
+    margin-top: 1rem !important;
+}
+
+.sapUiSmallMarginBegin {
+    margin-left: 0.5rem !important;
+}
+
+.sapUiSmallMarginEnd {
+    margin-right: 0.5rem !important;
 }
 
 /* Leave page Style */

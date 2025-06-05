@@ -132,6 +132,9 @@ entity Employee {
 entity Leave {
     key ID           : UUID;
     employeeId       : String;
+    casualLeave      : Integer;
+    sickLeave        : Integer;
+    paidLeave        : Integer;
     leaveType        : String;
     startDate        : Date;
     endDate          : Date;

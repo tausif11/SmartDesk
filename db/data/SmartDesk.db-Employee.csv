@@ -1,4 +1,15 @@
 ID,name,designation,org_ID
-emp-0001,Md. Tausif Alam,Associate Consultant,org-000001
-emp-0002,Aman Garg,HR Manager,org-000001
-emp-0003,Shiv Krishnan,Marketing Lead,org-000001
+emp-0001,Hassan M Marsh,Technology Practice Head,org-000001
+emp-0002,Atif Ahmad,Manager,org-000001
+emp-0003,Md. Tausif Alam,BTP Developer,org-000001
+emp-0004,MD. Ali,BTP Developer,org-000001
+emp-0005,Faizanul Abdin,CPI Consultant,org-000001
+emp-0006,Aman Garg,HR Executive,org-000001
+emp-0007,Deepak Kumar,Functional Consultant,org-000001
+emp-0008,Amresh Kumar Akela,ABAP Developer,org-000001
+emp-0009,Manish Kumar,CPI Consultant,org-000001
+emp-0010,Lameez fathima,BTP Developer,org-000001
+emp-0011,Naseeba Banu,CPI Consultant,org-000001
+emp-0012,Meghana SL,CPI Consultant,org-000001
+emp-0014,Ajmal Rahman,Functional Consultant,org-000001
+emp-0015,Radhika Kundra,ABAP Developer,org-000001
