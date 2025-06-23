@@ -1,5 +1,11 @@
 /* Enter your custom styles here */
 
+.HomePage {
+  background-color: #f4f5f7;
+  padding: 1rem;
+  font-family: "72", "Arial", sans-serif;
+}
+
 .IconTabBar {
     width: 150%;
 }
@@ -7,6 +13,19 @@
 .customToolHeader {
     padding: 4rem;
     border-radius: 12px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    height: 3.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#image {
+  margin-left: 1rem;
+}
+
+#searchField {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .sideContainer {
@@ -14,9 +33,35 @@
 }
 
 .QuickTitle {
-    margin-left: 40px;
-    font-size: x-large;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem 1rem 1rem;
+  color: #333;
 }
+
+.innerTile .sapMGenericTile {
+  margin: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.innerTile .sapMGenericTile:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.sapMGenericTileHeader {
+  color: #0070f2;
+  font-weight: 600;
+}
+
+.sapMText {
+  font-size: 0.9rem;
+  color: #555;
+}
+
 
 .OrgText {
     margin-top: 35px;
@@ -35,6 +80,7 @@
 
 .image {
     width: 95%;
+     border-radius: 1rem;
     height: 20rem;
     margin-left: 30px;
 }
