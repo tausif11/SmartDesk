@@ -221,9 +221,13 @@
 
 /* Time Tracking Style */
 
-.TimeLayout {
+.time-layout {
     margin-left: 30px;
     margin-top: 10px;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
 }
 
 .label {
@@ -254,11 +258,15 @@
 .formDataBtn {
     margin-top: 10px;
     margin-left: 30px;
-    direction: rtl;
+}
+
+.SubmitBtn{
+    margin-left: 33px;
 }
 
 .CancelBtn {
     margin-right: 10px;
+    
 }
 
 .timeEntryTitle {
@@ -340,85 +348,20 @@
 
 /* Workflow Page Style */
 
-.mPage {
-    background-color: #f4f4f4;
-}
-
-.WPage {
-    padding: 5px;
-}
-
-
-#tasksTable {
-    background-color: #ffffff;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-.mButton {
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.layoutButtonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.layoutButtonContainer .sapMButton {
-    width: 45%;
-}
-
-.fCard {
-    font-size: 1rem;
-    /* font-weight: 600; */
-    
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.workflowPage {
-    background-color: #f9f9f9;
-}
-
-.workflowScroll {
-    padding: 2rem;
-}
-
-.workflowVerticalLayout {
-    margin-bottom: 2rem;
-}
-
-.workflowTable {
+.workflowPanel {
     margin-top: 2rem;
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-.workflowTable .sapMColumnHeader {
+
+.workflowTable {
+    margin-top: 1rem;
+}
+
+.sapMLabel {
     font-weight: bold;
-    /* background-color: #f0f0f0; */
-}
-
-.workflowTable .sapMListTblCell {
-    padding: 0.75rem;
-}
-
-.workflowTable .sapMLIB:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.workflowTable .sapMLIB:nth-child(odd) {
-    background-color: #ffffff;
 }
 
 
@@ -732,6 +675,10 @@ body {
 /* Leave page Style */
 .LeaveTitle {
     margin-left: 34rem;
+}
+
+.ComboBox{
+    margin-left: -3.1rem !important;
 }
 
 .LeaveForm {

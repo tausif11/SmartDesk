@@ -42,25 +42,24 @@
                     <m:ScrollContainer>
                         <m:Panel headerText="Apply for Leave">
                             <m:VBox>
-                                <m:Label text="Leave Type"/>
-                                <m:Select id="leaveTypeSelect">
-                                    <m:items>
-                                        <core:Item key="Casual" text="Casual Leave"/>
-                                        <core:Item key="Sick" text="Sick Leave"/>
-                                        <core:Item key="Paid" text="Paid Leave"/>
-                                    </m:items>
-                                </m:Select>
+                                <m:Label text="Leave Type:"/>
+                                <m:ComboBox id="ComboBox" 
+                                                items="{leaveTypes>/}"
+                                                loadItems="handleLoadItems" 
+                                                class="ComboBox">
+                                    <core:Item id="items" class="ComboBoxText" text="{leaveTypes>text}"/>
+                                </m:ComboBox>
                             <m:HBox class="LeaveForm">
                                <m:VBox>
-                                    <m:Label text="Start Date"/>
+                                    <m:Label text="Start Date:"/>
                                     <m:DatePicker id="startDatePicker" value="{/oLeaveData/startDate}"/>
                                </m:VBox>
                                <m:VBox class="LeaveFormVertical">
-                                    <m:Label text="End Date" />
+                                    <m:Label text="End Date:" />
                                     <m:DatePicker id="endDatePicker" value="{/oLeaveData/endDate}"/>
                                </m:VBox>
                                 <m:VBox class="LeaveFormVertical">
-                                    <m:Label text="No. Of Days"/>
+                                    <m:Label text="No. Of Days:"/>
                                     <m:Input value="{/oLeaveData/numberOfDays}"/>
                                </m:VBox>
                              </m:HBox>

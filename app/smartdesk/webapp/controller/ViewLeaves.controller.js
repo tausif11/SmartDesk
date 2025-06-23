@@ -15,9 +15,24 @@ sap.ui.define([
 
 			oODataModel.read("/Leave",{
                  success: (data) =>{
-					// console.log(data);
 					var oModel = data.results;
 					console.log(oModel);
+
+					let LeaveType = [];
+
+					for(let i=0; i<oModel.length; i++){
+						const leaveType = oModel[i].leaveType;
+						console.log(leaveType);
+						
+						LeaveType.push({
+							key: leaveType,
+                            text: leaveType + " Leave"
+						});
+					}
+
+					const oLeaveTypeModel = new JSONModel(LeaveType);
+					console.log(oLeaveTypeModel.oData)
+                    this.getView().setModel(oLeaveTypeModel, "leaveTypes");
 
 					var oJsonModel = new JSONModel(oModel);
 					this.getView().setModel(oJsonModel,"Leave");

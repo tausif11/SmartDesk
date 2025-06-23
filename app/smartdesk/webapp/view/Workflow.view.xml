@@ -1,92 +1,111 @@
-<mvc:View xmlns:form="sap.ui.layout.form" xmlns:table2="sap.ui.mdc.table"
-	xmlns:core="sap.ui.core"
-	xmlns:odata="sap.ui.comp.odata"
-	xmlns="sap.uxap"
-	xmlns:vbm="sap.ui.vbm"
-	xmlns:table="sap.ui.table"
-	xmlns:smartTable="sap.ui.comp.smarttable"
-	xmlns:layout="sap.ui.layout"
-	xmlns:f="sap.f"
-	xmlns:tnt="sap.tnt"
-    controllerName="smartdesk.controller.Workflow"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:m="sap.m">
-	<m:Page title="Workflow Details" titleAlignment="Center" class="mPage">
-	  <m:ScrollContainer class="WPage">
-		<m:content>
-					<layout:VerticalLayout>
-						<layout:Grid defaultSpan="L4 M4">
-							<layout:content>
-								<m:Text text="Workflow Name: {WorkflowData>/0/WorkflowName}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Status: {WorkflowData>/0/Status}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Assigned To: {WorkflowData>/0/AssignedTo}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Company: {WorkflowData>/0/Client}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Start Date: {WorkflowData>/0/startDate}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="End Date: {WorkflowData>/0/endDate}" class="fCard" />
-							</layout:content>
-						</layout:Grid>
-						<layout:Grid defaultSpan="L4 M4">
-							<layout:content>
-								<m:Text text="Technology: {WorkflowData>/0/Technology}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Created By: {WorkflowData>/0/CreatedBy}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Last Updated: {WorkflowData>/0/LastUpdated}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Process Type: {WorkflowData>/0/ProcessType}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Approval Status: {WorkflowData>/0/ApprovalStatus}" class="fCard" />
-							</layout:content>
-							<layout:content>
-								<m:Text text="Description: {WorkflowData>/0/Description}" class="fCard" />
-							</layout:content>
-						</layout:Grid>
-					</layout:VerticalLayout>
-					<m:VBox class="sapUiSmallMargin sapUiMediumMarginTop">
-                    <m:Title text="Workflow Steps" level="H3" class="sapUiTinyMarginBottom"/>
-                    <m:Table items="{StepsModel>/}" growing="true" growingScrollToLoad="true" class="workflowTable">
-                        <m:columns>
-                            <m:Column><m:Text text="Step Name"/></m:Column>
-                            <m:Column><m:Text text="Status"/></m:Column>
-                            <m:Column><m:Text text="Assigned To"/></m:Column>
-                            <m:Column><m:Text text="Documents"/></m:Column>
-                        </m:columns>
-                        <m:items>
-                            <m:ColumnListItem>
-                                <m:cells>
-                                    <m:Text text="{StepsModel>Step}"/>
-                                    <m:Text text="{StepsModel>Status}"/>
-                                    <m:Text text="{StepsModel>AssignedTo}"/>
-                                    <m:VBox>
-                                        <m:List items="{StepsModel>documents/results}" showSeparators="Inner" mode="None">
-                                            <m:items>
-                                                <m:StandardListItem title="{StepsModel>Name}"
-                                                    description="Type: {StepsModel>Type}, Uploaded By: {StepsModel>UploadedBy}"
-                                                    icon="sap-icon://attachment"
-                                                    iconInset="false" />
-                                            </m:items>
-                                        </m:List>
-                                    </m:VBox>
-                                </m:cells>
-                            </m:ColumnListItem>
-                        </m:items>
-                    </m:Table>
-                </m:VBox>
-				</m:content>
-			</m:ScrollContainer>
-	</m:Page>    
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="smartdesk.controller.Workflow">
+
+    <m:Page title="Workflow Details" titleAlignment="Center" class="mPage">
+
+        <m:content>
+
+            <!-- Workflow Information Card -->
+            <m:Panel headerText="Workflow Information" class="workflowPanel">
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    columnsXL="4"
+                    columnsL="3"
+                    columnsM="2"
+                    labelSpanXL="2"
+                    labelSpanL="2"
+                    labelSpanM="3"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    class="sapUiSmallMargin">
+
+                    <form:content>
+                        <m:Label text="Workflow Name"/>
+                        <m:Text text="{WorkflowData>/0/WorkflowName}" />
+
+                        <m:Label text="Status"/>
+                        <m:ObjectStatus text="{WorkflowData>/0/Status}"
+                                        state="{= ${WorkflowData>/0/Status} === 'Approved' ? 'Success' : 'Warning'}"/>
+
+                        <m:Label text="Assigned To"/>
+                        <m:Text text="{WorkflowData>/0/AssignedTo}" />
+
+                        <m:Label text="Company"/>
+                        <m:Text text="{WorkflowData>/0/Client}" />
+
+                        <m:Label text="Start Date"/>
+                        <m:Text text="{WorkflowData>/0/startDate}" />
+
+                        <m:Label text="End Date"/>
+                        <m:Text text="{WorkflowData>/0/endDate}" />
+
+                        <m:Label text="Technology"/>
+                        <m:Text text="{WorkflowData>/0/Technology}" />
+
+                        <m:Label text="Created By"/>
+                        <m:Text text="{WorkflowData>/0/CreatedBy}" />
+
+                        <m:Label text="Last Updated"/>
+                        <m:Text text="{WorkflowData>/0/LastUpdated}" />
+
+                        <m:Label text="Process Type"/>
+                        <m:Text text="{WorkflowData>/0/ProcessType}" />
+
+                        <m:Label text="Approval Status"/>
+                        <m:ObjectStatus text="{WorkflowData>/0/ApprovalStatus}"
+                                        state="{= ${WorkflowData>/0/ApprovalStatus} === 'Approved' ? 'Success' : 'None'}"/>
+
+                        <m:Label text="Description"/>
+                        <m:Text text="{WorkflowData>/0/Description}" wrapping="true"/>
+                    </form:content>
+
+                </form:SimpleForm>
+            </m:Panel>
+
+            <!-- Workflow Steps Table -->
+            <m:Panel headerText="Workflow Steps" class="workflowPanel">
+                <m:Table
+                    id="workflowStepsTable"
+                    items="{StepsModel>/}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    class="workflowTable">
+
+                    <m:columns>
+                        <m:Column><m:Text text="Step Name"/></m:Column>
+                        <m:Column><m:Text text="Status"/></m:Column>
+                        <m:Column><m:Text text="Assigned To"/></m:Column>
+                        <m:Column><m:Text text="Documents"/></m:Column>
+                    </m:columns>
+
+                    <m:items>
+                        <m:ColumnListItem>
+                            <m:cells>
+                                <m:Text text="{StepsModel>Step}"/>
+                                <m:ObjectStatus text="{StepsModel>Status}" state="{= ${StepsModel>Status} === 'Done' ? 'Success' : 'Warning'}"/>
+                                <m:Text text="{StepsModel>AssignedTo}"/>
+                                <m:VBox>
+                                    <m:List items="{StepsModel>documents/results}" showSeparators="Inner" mode="None">
+                                        <m:items>
+                                            <m:StandardListItem
+                                                title="{StepsModel>Name}"
+                                                description="Type: {StepsModel>Type}, Uploaded By: {StepsModel>UploadedBy}"
+                                                icon="sap-icon://attachment"
+                                                iconInset="false" />
+                                        </m:items>
+                                    </m:List>
+                                </m:VBox>
+                            </m:cells>
+                        </m:ColumnListItem>
+                    </m:items>
+                </m:Table>
+            </m:Panel>
+
+        </m:content>
+    </m:Page>
 </mvc:View>

@@ -13,7 +13,7 @@
     <m:Page title="Time Tracking" titleAlignment="Center">
         
         <m:content>
-            <layout:VerticalLayout class="TimeLayout" busyIndicatorSize="Large">
+            <layout:VerticalLayout class="time-layout" busyIndicatorSize="Large">
                     <m:HBox >
                         <m:Label text="Select Date: " class="label"/>
                         <m:DatePicker id="dpDate" width="100%" class="dpDate"/>
