@@ -5,6 +5,7 @@
           xmlns:table="sap.ui.table"
           xmlns:layout="sap.ui.layout"
           xmlns:cards="sap.f.cards"
+          xmlns:macros="sap.fe.macros"
           xmlns:f="sap.f"
           xmlns:tnt="sap.tnt" 
           controllerName="smartdesk.controller.ViewLeaves"
@@ -20,17 +21,19 @@
                             </f:heading>
                             
                         </f:DynamicPageTitle>
-                    </f:title>
 
+                    </f:title>
+ 
+                  
                   <!-- Page Heading  -->
                   <f:header>
                         <f:DynamicPageHeader>
                             <m:VBox>
                                 <m:Title text="Remaining Leaves " level="H2"/>
                                 <m:VBox>
-                                   <m:Text text="Casual Leaves: {Leave>/casualLeave}"/>
-                                   <m:Text text="Paid Leaves: {Leave>/paidLeave}"/>
-                                   <m:Text text="Sick Leaves: {Leave>/sickLeave}"/>
+                                   <m:Text text="Casual Leaves: {Leave>/0/casualLeave}"/>
+                                   <m:Text text="Paid Leaves: {Leave>/0/paidLeave}"/>
+                                   <m:Text text="Sick Leaves: {Leave>/0/sickLeave}"/>
                                 </m:VBox>
                             </m:VBox>
                         </f:DynamicPageHeader>
@@ -60,7 +63,7 @@
                                </m:VBox>
                                 <m:VBox class="LeaveFormVertical">
                                     <m:Label text="No. Of Days:"/>
-                                    <m:Input value="{/oLeaveData/numberOfDays}"/>
+                                    <m:Input id="numOfDays"/>
                                </m:VBox>
                              </m:HBox>
                                 <m:Label text="Note:" class="Reason"/>
@@ -68,7 +71,7 @@
                                             rows="5" 
                                             placeholder="Enter reason for leave..." 
                                             width="40rem"
-                                            value="{/oLeaveData/note}"/>
+                                        />
                                 <m:Button text="Apply Leave" press="onApplyLeave" type="Emphasized"/>
                             </m:VBox>
                         </m:Panel>
@@ -103,7 +106,7 @@
                                 </m:items>
                             </m:Table>
                         </m:Panel>
-                        </m:ScrollContainer>
+                        </m:ScrollContainer>   
                     </f:content>
              </f:DynamicPage>
 </mvc:View>

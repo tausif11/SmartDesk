@@ -42,7 +42,7 @@
                         </m:HBox>
                     </m:Panel>
 
-                    <m:Panel headerText="Departments:" class="sapUiResponsiveMargin">
+                    <m:Panel headerText="Departments:" >
                         <m:FlexBox                 
                             direction="Row"               
                             items="{department>/}"

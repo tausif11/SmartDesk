@@ -1,255 +1,59 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:odata="sap.ui.comp.odata"
-	xmlns="sap.uxap"
-	xmlns:vbm="sap.ui.vbm"
-	xmlns:table="sap.ui.table"
-	xmlns:layout="sap.ui.layout"
-	xmlns:cards="sap.f.cards"
-	xmlns:f="sap.f"
-	xmlns:tnt="sap.tnt" controllerName="smartdesk.controller.HomePage"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:m="sap.m">
-	<!-- <m:Page id="page" title="{i18n>title}" titleAlignment="Center" class="HomePage"> -->
-		<m:ScrollContainer id="menuBar" vertical="true" height="100%">
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    controllerName="smartdesk.controller.HomePage">
 
+    <VBox height="100%">
 
-			<tnt:ToolHeader id="shellLikeToolHeader" class="customToolHeader sapUiResponsiveMargin sapUiContentPadding" style="Standard">
-				<!-- <m:Button id="icon1" icon="sap-icon://menu2" type="Transparent" tooltip="Menu" press="onPress">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolBar" priority="NeverOverflow"/>
-					</m:layoutData>
-				</m:Button> -->
-				
-				<m:Image id="image" src="image.png" decorative="false" tooltip="SAP Logo" width="5%" height="110%">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolBar1" priority="NeverOverflow"></m:OverflowToolbarLayoutData>
-					</m:layoutData>
-				</m:Image>
-				<m:ComboBox id="ComboBox" 
-				            items="{/oComboBox}"
-							loadItems="handleLoadItems" 
-							class="ComboBox">
-				  <core:Item id="items" class="ComboBoxText" text="{Name}"/>
-			   </m:ComboBox>
-				<m:ToolbarSpacer id="spacer">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolBar2" priority="NeverOverflow"/>
-					</m:layoutData>
-				</m:ToolbarSpacer>
-				<m:SearchField 
-                    id="searchField"
-                    placeholder="search here..."
-                    width="40%"
-                    enableSuggestions="true"></m:SearchField>
-				<m:OverflowToolbarButton id="icon2" icon="sap-icon://source-code" type="Transparent" tooltip="Source Code" text="Source Code">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolBar3" priority="NeverOverflow"/>
-					</m:layoutData>
-				</m:OverflowToolbarButton>
-				<m:OverflowToolbarButton id="icon" icon="sap-icon://card" type="Transparent" tooltip="Card" text="Card">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolbar4" group="2"/>
-					</m:layoutData>
-				</m:OverflowToolbarButton>
-				<m:OverflowToolbarButton id="icon3" icon="sap-icon://action-settings" type="Transparent" text="Settings"/>
-				<m:Button id="bellButton" icon="sap-icon://bell" type="Transparent" tooltip="Notification">
-					<m:layoutData>
-						<m:OverflowToolbarLayoutData id="toolbar6" priority="NeverOverflow"/>
-					</m:layoutData>
-				</m:Button>
-				<tnt:ToolHeaderUtilitySeparator id="seperator"/>
-				<m:ToolbarSpacer id="spacer3" width="0.5rem"/>
-				<m:Avatar id="image1" src="avatar.png" press="onProfile" ariaHasPopup="Menu"/>
-			</tnt:ToolHeader>
+        <tnt:ToolHeader class="customToolHeader sapUiResponsiveMargin sapUiContentPadding">
+            <Image src="image.png" width="5%" height="110%" tooltip="SAP Logo" />
+            <ToolbarSpacer />
+            <SearchField placeholder="Search here..." width="40%" enableSuggestions="true" />
+            <OverflowToolbarButton icon="sap-icon://source-code" type="Transparent" text="Source Code" />
+            <OverflowToolbarButton icon="sap-icon://card" type="Transparent" text="Card" />
+            <OverflowToolbarButton icon="sap-icon://action-settings" type="Transparent" text="Settings" />
+            <Button icon="sap-icon://bell" type="Transparent" tooltip="Notification" />
+            <tnt:ToolHeaderUtilitySeparator />
+            <ToolbarSpacer width="0.5rem" />
+            <Avatar src="avatar.png" press="onProfile" ariaHasPopup="Menu" />
+        </tnt:ToolHeader>
 
-			<m:VBox id="vbox">
-			    <m:Image id="img" src="free.jpg" alt="Snow" class="image"/>
-					<m:HBox id="overlayContainer" justifyContent="Center" alignItems="Center">
-					   <m:Text id="imgText" text="{/timeOfDay}" class="overlayText typewriter-animation"/>
-					</m:HBox>	
-				<!-- <m:Text id="clockText" text="{/localTime}" class="clockText"/>		 -->
-			</m:VBox>
+        <HBox height="100%">
 
-             <m:VBox id="titlebox">
-			   <m:Title id="title" text="Quick Actions" class="QuickTitle"/>
-			 </m:VBox>
-			
-			<m:VBox id="VBoxContainer">
-			   <m:HBox id="HBoxContainer">
-			      <f:GridContainer id="gridLayout" class="gridLayout">
-				    <m:HBox id="innerVbox1" class="innerTile">
-				      <m:GenericTile id="ClockMyTime" 
-					                 press="onTimeTracking"
-					                 class="ClockMyTime"
-									 header="Time Tracking"
-									 headerImage="sap-icon://create-entry-time">
-							<m:TileContent id="ClockMyTimeFooter" footer="Time Tracking">
-							   <m:layoutData>
-							       	<f:GridContainerItemLayoutData id="ClockLayout" minRows="2" columns="2" />
-							   </m:layoutData>
-							   <m:Text id="ClockMyTimetxt" text="User Time Tracking"/>
-							</m:TileContent>		 
-					  </m:GenericTile>
-				      <m:GenericTile id="Workflows" 
-					                 class="Workflows"
-									 press="onWorkflows"
-									 header="Workflows"
-									 headerImage="sap-icon://workflow-tasks">
-							<m:TileContent id="WorkflowsFooter" footer="Workflows">
-							<m:layoutData>
-							    <f:GridContainerItemLayoutData id="WorkflowsLayout" minRows="2" columns="2" />
-							</m:layoutData>
-							   <m:Text id="WorkflowsText" text="Worklfows Details"/>
-							</m:TileContent>
-					  </m:GenericTile>
-					  <!-- <m:GenericTile id="TimeOff" 
-					                 class="TimeOff"
-									 header="Request Time Off"
-									 headerImage="sap-icon://time-off">
-								<m:TileContent id="TimeOffFooter" footer="Time Off">
-									<m:layoutData>
-										<f:GridContainerItemLayoutData id="TimeOffLayout" minRows="2" columns="2" />
-									</m:layoutData>
-									<m:Text id="TimeOffText" text="Time Off Details"/>
-							</m:TileContent>	 
-					  </m:GenericTile > -->
-					  <m:GenericTile id="PayStatement" 
-					                 class="PayStatement"
-									 press="onPayStatement"
-									 header="View Pay Statement"
-									 headerImage="sap-icon://currency">
-							<m:TileContent id="PayStatementFooter" footer="Pay Statement">
-									<m:layoutData>
-										<f:GridContainerItemLayoutData id="PayStatementLayout" minRows="2" columns="2" />
-									</m:layoutData>
-									<m:Text id="PayStatementText" text="Pay Statement Details"/>
-							</m:TileContent>	
-					  </m:GenericTile>
-					  <m:GenericTile id="ViewProfile" 
-					                 class="ViewProfile"
-									 press="onViewProfile"
-									 header="View My Profile"
-									 headerImage="sap-icon://business-card">
-							<m:TileContent id="ViewProfileFooter" footer="View Profile">
-									<m:layoutData>
-										<f:GridContainerItemLayoutData id="ViewProfileLayout" minRows="2" columns="2" />
-									</m:layoutData>
-									<m:Text id="ViewProfileText" text="Profile Details"/>
-							</m:TileContent>			 
-					  </m:GenericTile>
-				      <m:GenericTile id="ViewLearning" 
-					                 class="ViewLearning"
-									 press="onViewLearning"
-									 header="View My Learning"
-									 headerImage="sap-icon://education">
-							<m:TileContent id="ViewMyLearningFooter" footer="View Learning">
-									<m:layoutData>
-										<f:GridContainerItemLayoutData id="ViewMyLearningLayout" minRows="2" columns="2" />
-									</m:layoutData>
-									<m:Text id="ViewMyLearningText" text="Learning Details"/>
-							</m:TileContent>		 
-					  </m:GenericTile>
-					</m:HBox>
-					 <m:HBox id="innerVbox2" class="innerTile">
-				        <m:GenericTile id="ViewOrg" 
-										class="ViewOrg"
-										press="onViewOrg"
-										header="View My Org"
-										headerImage="sap-icon://tree">
-								<m:TileContent id="ViewOrgFooter" footer="View Org">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="ViewOrgLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="ViewOrgtxt" text="View Org Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile>
-				        <m:GenericTile id="ViewLeaves" 
-										class="ViewLeaves"
-										press="onViewLeaves"
-										header="View My Leaves"
-										headerImage="sap-icon://calendar">
-								<m:TileContent id="ViewLeavesFooter" footer="View Leaves">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="ViewLeavesLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="ViewLeavestxt" text="View Leaves Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile>
-						<m:GenericTile id="ViewReport" 
-										class="ViewReport"
-										press="onViewReport"
-										header="View Tile Report"
-										headerImage="sap-icon://donut-chart">
-								<m:TileContent id="ViewReportFooter" footer="View Report">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="ViewReportLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="ViewReporttxt" text="View Report Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile>
-						<!-- <m:GenericTile id="ViewReportCenter" 
-										class="ViewReportCenter"
-										header="View Report Center"
-										headerImage="sap-icon://business-objects-experience">
-								<m:TileContent id="CenterReportFooter" footer="Report Center">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="ReportCenterLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="ReportCentertxt" text="View Report Center Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile> -->
-						<m:GenericTile id="ViewDocument" 
-										class="ViewDocument"
-										header="View Company Document"
-										headerImage="sap-icon://document">
-								<m:TileContent id="ViewDocumentFooter" footer="Company Document">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="CompanyDocumentLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="CompanyDocumenttxt" text="View Report Center Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile>
-						<m:GenericTile id="LearningAdministration" 
-										class="LearningAdministration"
-										header="View Learning Administration"
-										headerImage="sap-icon://learning-assistant">
-								<m:TileContent id="LearningAdmiFooter" footer="Learning Administration">
-										<m:layoutData>
-												<f:GridContainerItemLayoutData id="LearningAdminLayout" minRows="2" columns="2" />
-										</m:layoutData>
-										<m:Text id="LearningAdmintxt" text="View Learning Administration Details"/>
-							    </m:TileContent>		 
-					    </m:GenericTile>
-					</m:HBox>
-				  </f:GridContainer>
-			   </m:HBox>
-			</m:VBox>
+            <tnt:SideNavigation id="sideNav" expanded="true" selectedKey="timeTracking" >
+                <tnt:NavigationList itemSelect="onSideNavSelect">
+                    <tnt:NavigationListItem text="Time Tracking" key="timeTracking" class="sideNav" icon="sap-icon://create-entry-time" />
+                    <tnt:NavigationListItem text="Workflows" key="workflows" icon="sap-icon://workflow-tasks" />
+                    <tnt:NavigationListItem text="Pay Statement" key="payStatement" icon="sap-icon://currency" />
+                    <tnt:NavigationListItem text="My Profile" key="profile" icon="sap-icon://business-card" />
+                    <tnt:NavigationListItem text="My Learning" key="learning" icon="sap-icon://education" />
+                    <tnt:NavigationListItem text="My Org" key="org" icon="sap-icon://tree" />
+                    <tnt:NavigationListItem text="My Leaves" key="leaves" icon="sap-icon://calendar" />
+                    <tnt:NavigationListItem text="Tile Report" key="report" icon="sap-icon://donut-chart" />
+                    <tnt:NavigationListItem text="Company Document" key="document" icon="sap-icon://document" />
+                    <tnt:NavigationListItem text="Learning Admin" key="learningAdmin" icon="sap-icon://learning-assistant" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
 
-			<!-- <m:Table id="table" items="{/Products}">
-				<m:columns>
-					<m:Column id="col1">
-						<m:Text id="text" text="Product Name"/>
-					</m:Column>
-					<m:Column id="col2">
-						<m:Text id="text2" text="Category"/>
-					</m:Column>
-				</m:columns>
-				<m:items>
-					<m:ColumnListItem id="CLI">
-						<m:cells>
-							<m:Text id="Pname" text="{ProductName}" />
-							<m:Text id="Cname" text="{Category/CategoryName}" />
-						</m:cells>
-					</m:ColumnListItem>
-				</m:items>
-			</m:Table> -->
+            <VBox id="contentBox" width="100%" class="sapUiSmallMargin">
+        
+                <VBox>
+                    <Image src="free.jpg" alt="Background Image" class="image" />
+                    <HBox justifyContent="Center" alignItems="Center">
+                        <Text text="{/timeOfDay}" class="overlayText typewriter-animation" />
+                    </HBox>
+                </VBox>
 
-			<!-- <m:VBox id="OrgText">
-			   <m:Title id="OrgTextTitle" text="Organizational Updates" class="OrgText"/>
-			   <m:VBox id="Service">
-			       <m:Title id="EmployeeService" text="Employee Self Service" class="EmployeeService"/>
-               </m:VBox>
-			</m:VBox> -->
+                <VBox>
+                    <Title text="Quick Actions (via Side Navigation)" class="QuickTitle" />
+                </VBox>
 
-		</m:ScrollContainer>
-	<!-- </m:Page> -->
+                <VBox id="pageContentArea">
+                    <Text text="Select an item from the side navigation to see content here." />
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
 </mvc:View>

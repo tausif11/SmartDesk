@@ -1,108 +1,138 @@
-sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/odata/v2/ODataModel",
-	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageToast"
-], function(Controller, ODataModel, JSONModel, MessageToast) {
-	"use strict";
+sap.ui.define(
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/odata/v2/ODataModel",
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast",
+  ],
+  function (Controller, ODataModel, JSONModel, MessageToast) {
+    "use strict";
 
-	return Controller.extend("smartdesk.controller.ViewLeaves", {
+    return Controller.extend("smartdesk.controller.ViewLeaves", {
+      onInit: function () {
+        const oODataModel = new ODataModel("/v2/odata/v4/smart-desk/", {
+          json: true,
+        });
 
-		onInit: function() {
-			const oODataModel = new ODataModel("/v2/odata/v4/smart-desk/",{
-                 json:true
-			});
+        oODataModel.read("/Leave", {
+          success: (data) => {
+            var oModel = data.results;
+            console.log(oModel);
 
-			oODataModel.read("/Leave",{
-                 success: (data) =>{
-					var oModel = data.results;
-					console.log(oModel);
+            let LeaveType = [];
 
-					let LeaveType = [];
+            for (let i = 0; i < oModel.length; i++) {
+              const leaveType = oModel[i].leaveType;
+              console.log(leaveType);
 
-					for(let i=0; i<oModel.length; i++){
-						const leaveType = oModel[i].leaveType;
-						console.log(leaveType);
-						
-						LeaveType.push({
-							key: leaveType,
-                            text: leaveType + " Leave"
-						});
-					}
+              LeaveType.push({
+                key: leaveType,
+                text: leaveType + " Leave",
+              });
+            }
 
-					const oLeaveTypeModel = new JSONModel(LeaveType);
-					console.log(oLeaveTypeModel.oData)
-                    this.getView().setModel(oLeaveTypeModel, "leaveTypes");
+            const oLeaveTypeModel = new JSONModel(LeaveType);
+            console.log(oLeaveTypeModel.oData);
+            this.getView().setModel(oLeaveTypeModel, "leaveTypes");
 
-					var oJsonModel = new JSONModel(oModel);
-					this.getView().setModel(oJsonModel,"Leave");
-				 },
-				 error: (err) =>{
-					console.log(err);
-				 }
-			})
-		},
+            var oJsonModel = new JSONModel(oModel);
+            this.getView().setModel(oJsonModel, "Leave");
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      },
 
-		onApplyLeave: function() {
-			var oModel          = this.getView().getModel();
-			var oLeavesFormData = oModel.getProperty("/oLeaveData");
-			var aLeavesData     = oModel.getProperty("/oNewArray/leavesData");
+      onApplyLeave: function () {
+        var oModel = this.getView().getModel("Leave");
 
-			var oSelect    = this.getView().byId("leaveTypeSelect");
-			var sLeaveType = oSelect.getSelectedKey();
-			var oNumOfDays = parseInt(oLeavesFormData.numberOfDays, 10);
+        /*-------------------------------------------------*/
+                        /*testing Data*/
+        /*-------------------------------------------------*/
 
+             var CasualDays = oModel.oData[0].casualLeave;
+             var PaidDays = oModel.oData[0].paidLeave;
+             var SickDays = oModel.oData[0].sickLeave;
 
-			if (isNaN(oNumOfDays) || oNumOfDays <= 0) {
-				MessageToast.show("Please enter a valid number of days.");
-				return;
-			}
+             console.log("CasualDays", CasualDays);
+             console.log("PaidDays", PaidDays);
+             console.log("SickDays", SickDays);
+        /*-------------------------------------------------*/
 
+        // var oLeavesFormData = oModel.getProperty("/oLeaveData");
+        // var aLeavesData     = oModel.getProperty("/oNewArray/leavesData");
 
-			if(sLeaveType === 'Casual' && oLeavesFormData.Casual >= oNumOfDays)
-            {
-				oLeavesFormData.Casual = oLeavesFormData.Casual - oNumOfDays;
-			} 
-            else if(sLeaveType === 'Sick' && oLeavesFormData.Sick >= oNumOfDays)
-            {
-				oLeavesFormData.Sick = oLeavesFormData.Sick - oNumOfDays;
-			}
-            else if(sLeaveType === 'Paid' && oLeavesFormData.Paid >= oNumOfDays)
-            {
-				oLeavesFormData.Paid = oLeavesFormData.Paid - oNumOfDays;
-			}
-            else
-            {
-				MessageToast.show("Not enough leave balance for the selected leave type.");
-				return;
-			}
+        var LeaveType = this.getView().byId("ComboBox").getValue();
 
-			aLeavesData.push({
-				leaveType   : sLeaveType,
-				startDate   : oLeavesFormData.startDate,
-				numberOfDays: oLeavesFormData.numberOfDays,
-				endDate     : oLeavesFormData.endDate,
-				note        : oLeavesFormData.note,
-				status      : "Pending",
-				statusState : "Warning"
-			});
+        var oStartDate = this.getView().byId("startDatePicker").getValue();
+        var oEndDate = this.getView().byId("endDatePicker").getValue();
+        var oLeaveDays = this.getView().byId("numOfDays").getValue();
+        var oNumOfDays = parseInt(oLeaveDays, 10);
 
+        console.log("LeaveType:", LeaveType);
+        console.log("oStartDate:", oStartDate);
+        console.log("oEndDate:", oEndDate);
+        console.log("oLeaveDays:", typeof oNumOfDays);
 
-			oModel.setProperty("/aLeavesData", aLeavesData);
+        if (isNaN(oNumOfDays) || oNumOfDays <= 0) {
+          MessageToast.show("Please enter a valid number of days.");
+          return;
+        }
 
-			MessageToast.show(`${sLeaveType}: Leave applied successfully`);
+        var oLeaveBalances = oModel.getProperty("/0");
 
-			this.clearForm();
-		},
+        var CasualDays = oLeaveBalances.casualLeave;
+        var PaidDays = oLeaveBalances.paidLeave;
+        var SickDays = oLeaveBalances.sickLeave;
 
-		clearForm: function() {
-			var oModel = this.getView().getModel();
+        if (LeaveType === "Casual Leave" && CasualDays >= oNumOfDays) 
+			{
+				CasualDays -= oNumOfDays;
+				oModel.setProperty("/0/casualLeave", CasualDays);
+            } 
+		else if (LeaveType === "Sick Leave" && SickDays >= oNumOfDays)
+			{
+				SickDays -= oNumOfDays;
+				oModel.setProperty("/0/sickLeave", SickDays);
+            } 
+		else if (LeaveType === "Paid Leave" && PaidDays >= oNumOfDays)
+			{
+                PaidDays -= oNumOfDays;
+                oModel.setProperty("/0/paidLeave", PaidDays);
+           } 
+		else {
+          MessageToast.show(
+            "Not enough leave balance for the selected leave type."
+          );
+          return;
+        }
 
-			oModel.setProperty("/oLeaveData/startDate", null);
-			oModel.setProperty("/oLeaveData/endDate", null);
-			oModel.setProperty("/oLeaveData/note", "");
-			oModel.setProperty("/oLeaveData/numberOfDays", "");
-		}
+        var aLeavesData = oModel.getProperty("/aLeavesData") || [];
+        aLeavesData.push({
+          leaveType: LeaveType,
+          startDate: oStartDate,
+          endDate: oEndDate,
+          numberOfDays: oNumOfDays,
+          note: this.getView().byId("leaveReason").getValue(),
+          status: "Pending",
+          statusState: "Warning",
+        });
+        oModel.setProperty("/aLeavesData", aLeavesData);
 
-	});
-});
+        MessageToast.show(`${LeaveType}: Leave applied successfully`);
+
+        this.clearForm();
+      },
+
+      clearForm: function () {
+        var oModel = this.getView().getModel();
+
+        oModel.setProperty("/oLeaveData/startDate", null);
+        oModel.setProperty("/oLeaveData/endDate", null);
+        oModel.setProperty("/oLeaveData/note", "");
+        oModel.setProperty("/oLeaveData/numberOfDays", "");
+      },
+    });
+  }
+);

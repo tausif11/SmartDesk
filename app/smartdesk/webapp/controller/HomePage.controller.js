@@ -3,61 +3,41 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/ui/core/UIComponent",
     "sap/ui/model/json/JSONModel"
-], (Controller, Fragment, UIComponent,JSONModel) => {
+], (Controller, Fragment, UIComponent, JSONModel) => {
     "use strict";
 
     return Controller.extend("smartdesk.controller.HomePage", {
-        onInit() {
 
+        onInit() {
             var oModel = new JSONModel();
             this.getView().setModel(oModel);
 
-           var currentTime = new Date();
-           var hours = currentTime.getHours();
-           
-           var hour = currentTime.getHours();
-           var minutes = currentTime.getMinutes();
-           var sec = currentTime.getSeconds();
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var sec = currentTime.getSeconds();
 
-           var localTime = `Current Time: ${hour}:${minutes}`;
-           console.log(`Current Time: ${hour}:${minutes}:${sec}`);
+            var localTime = `Current Time: ${hours}:${minutes}`;
+            console.log(`Current Time: ${hours}:${minutes}:${sec}`);
+
+            var timeOfDay = "";
+
+            if (hours < 12) {
+                timeOfDay = "Good Morning...";
+            } else if (hours >= 12 && hours <= 16) {
+                timeOfDay = "Good Afternoon...";
+            } else {
+                timeOfDay = "Good Evening...";
+            }
+
             
-            var timeOfDay = "" ;
 
-            if(hours < 12 ){
-                timeOfDay = "Good Morning..."
-            }
-            
-            else if(hours >= 12 && hours <= 16){
-                timeOfDay = "Good Afternoon..."
-            }
-
-            else if(hours >= 16 && hours <= 24){
-                timeOfDay = "Good Evening..."
-            }
-
-            var oComboBox = [
-                { Name: "Home" },
-                { Name: "Admin Center" },
-                { Name: "Calibration" },
-                { Name: "Careers" },
-                { Name: "Company Info" },
-                { Name: "Compensation Info" },
-                { Name: "Continuous Performance" },
-                { Name: "Development"},
-                { Name: "Learning"},
-                { Name: "Payroll" }
-            ];
- 
-            oModel.setProperty("/timeOfDay", timeOfDay); 
+            oModel.setProperty("/timeOfDay", timeOfDay);
             oModel.setProperty("/localTime", localTime);
-            oModel.setProperty("/oComboBox", oComboBox); 
-            
         },
 
         onProfile: function (oEvent) {
-            var oView = this.getView(); 
-            console.log(oView);
+            var oView = this.getView();
 
             if (this._oActionSheet) {
                 if (this._oActionSheet.isOpen()) {
@@ -70,80 +50,95 @@ sap.ui.define([
 
             Fragment.load({
                 id: oView.getId(),
-                name: "northwindui5.northwindui.Fragment.Actionsheet", 
+                name: "northwindui5.northwindui.Fragment.Actionsheet", // Update to match your app namespace if needed
                 type: "XML"
-            }).then(function(oActionSheet)
-            {
-                this._oActionSheet = oActionSheet; 
-                oView.addDependent(oActionSheet); 
+            }).then(function (oActionSheet) {
+                this._oActionSheet = oActionSheet;
+                oView.addDependent(oActionSheet);
                 oActionSheet.openBy(oEvent.getSource());
-            }.bind(this)).catch(function (error) 
-            {
+            }.bind(this)).catch(function (error) {
                 console.error("Error loading ActionSheet fragment: ", error);
             });
         },
 
-        onViewProfile1: function(oEvent)
-        {
-            console.log("View Profile");
+        // 🔁 Reusable navigation function
+        _navTo: function (route, id) {
             var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewProfile1", {
-               "Id":"ViewProfile1"
-          });
+            oRouter.navTo(route, { "Id": id });
         },
 
-        onTimeTracking: function(oEvent){
-            var oRouter = UIComponent.getRouterFor(this);
-             oRouter.navTo("TimeTracking", {
-                "Id" : "TimeTracking"
-            });
-        },
-        onWorkflows: function(oEvent){
-            var oRouter = UIComponent.getRouterFor(this);
-             oRouter.navTo("Workflow", {
-                "Id" : "Workflow"
-            });
+        // 🔄 Side Navigation Event Handler
+        onSideNavSelect: function (oEvent) {
+            const sKey = oEvent.getParameter("item").getKey();
+
+            switch (sKey) {
+                case "timeTracking":
+                    this.onTimeTracking();
+                    break;
+                case "workflows":
+                    this.onWorkflows();
+                    break;
+                case "payStatement":
+                    this.onPayStatement();
+                    break;
+                case "profile":
+                    this.onViewProfile();
+                    break;
+                case "learning":
+                    this.onViewLearning();
+                    break;
+                case "org":
+                    this.onViewOrg();
+                    break;
+                case "leaves":
+                    this.onViewLeaves();
+                    break;
+                case "report":
+                    this.onViewReport();
+                    break;
+                case "document":
+                    this._navTo("CompanyDocument", "CompanyDocument");
+                    break;
+                case "learningAdmin":
+                    this._navTo("LearningAdmin", "LearningAdmin");
+                    break;
+                default:
+                    console.warn("No route mapped for key:", sKey);
+                    break;
+            }
         },
 
-        onPayStatement: function(oEvent)
-        {
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("PayStatement", {
-               "Id":"PayStatement"
-          });
+        // 🚀 Existing Navigation Functions
+        onTimeTracking: function () {
+            this._navTo("TimeTracking", "TimeTracking");
         },
-        onViewProfile: function(oEvent)
-        {
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewProfile", {
-               "Id":"ViewProfile"
-          });
+
+        onWorkflows: function () {
+            this._navTo("Workflow", "Workflow");
         },
-        onViewLearning: function(oEvent)
-        {
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewLearning", {
-               "Id":"ViewLearning"
-          });
+
+        onPayStatement: function () {
+            this._navTo("PayStatement", "PayStatement");
         },
-        onViewOrg: function(oEvent)
-        {
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewOrg", {
-               "Id":"ViewOrg"
-          });
+
+        onViewProfile: function () {
+            this._navTo("ViewProfile", "ViewProfile");
         },
-        onViewLeaves: function(oEvent){
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewLeaves",{
-                "Id": "ViewLeaves"
-            })
+
+        onViewLearning: function () {
+            this._navTo("ViewLearning", "ViewLearning");
         },
-        onViewReport: function(oEvent){
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("ViewTileReport",{
-                "Id": "ViewTileReport"
-            })
+
+        onViewOrg: function () {
+            this._navTo("ViewOrg", "ViewOrg");
+        },
+
+        onViewLeaves: function () {
+            this._navTo("ViewLeaves", "ViewLeaves");
+        },
+
+        onViewReport: function () {
+            this._navTo("ViewTileReport", "ViewTileReport");
         }
     });
 });
