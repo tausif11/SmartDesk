@@ -50,8 +50,7 @@ sap.ui.define([
 
             Fragment.load({
                 id: oView.getId(),
-                name: "northwindui5.northwindui.Fragment.Actionsheet", // Update to match your app namespace if needed
-                type: "XML"
+                name: "northwindui5.northwindui.Fragment.Actionsheet",
             }).then(function (oActionSheet) {
                 this._oActionSheet = oActionSheet;
                 oView.addDependent(oActionSheet);
@@ -61,13 +60,11 @@ sap.ui.define([
             });
         },
 
-        // 🔁 Reusable navigation function
         _navTo: function (route, id) {
             var oRouter = UIComponent.getRouterFor(this);
             oRouter.navTo(route, { "Id": id });
         },
 
-        // 🔄 Side Navigation Event Handler
         onSideNavSelect: function (oEvent) {
             const sKey = oEvent.getParameter("item").getKey();
 
@@ -93,22 +90,12 @@ sap.ui.define([
                 case "leaves":
                     this.onViewLeaves();
                     break;
-                case "report":
-                    this.onViewReport();
-                    break;
-                case "document":
-                    this._navTo("CompanyDocument", "CompanyDocument");
-                    break;
-                case "learningAdmin":
-                    this._navTo("LearningAdmin", "LearningAdmin");
-                    break;
                 default:
                     console.warn("No route mapped for key:", sKey);
                     break;
             }
         },
 
-        // 🚀 Existing Navigation Functions
         onTimeTracking: function () {
             this._navTo("TimeTracking", "TimeTracking");
         },

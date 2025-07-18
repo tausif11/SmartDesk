@@ -22,18 +22,15 @@
 
         <HBox height="100%">
 
-            <tnt:SideNavigation id="sideNav" expanded="true" selectedKey="timeTracking" >
+            <tnt:SideNavigation id="sideNav" expanded="true" class="sideNav">
                 <tnt:NavigationList itemSelect="onSideNavSelect">
-                    <tnt:NavigationListItem text="Time Tracking" key="timeTracking" class="sideNav" icon="sap-icon://create-entry-time" />
+                    <tnt:NavigationListItem text="Time Tracking" key="timeTracking" icon="sap-icon://create-entry-time" />
                     <tnt:NavigationListItem text="Workflows" key="workflows" icon="sap-icon://workflow-tasks" />
                     <tnt:NavigationListItem text="Pay Statement" key="payStatement" icon="sap-icon://currency" />
-                    <tnt:NavigationListItem text="My Profile" key="profile" icon="sap-icon://business-card" />
-                    <tnt:NavigationListItem text="My Learning" key="learning" icon="sap-icon://education" />
-                    <tnt:NavigationListItem text="My Org" key="org" icon="sap-icon://tree" />
-                    <tnt:NavigationListItem text="My Leaves" key="leaves" icon="sap-icon://calendar" />
-                    <tnt:NavigationListItem text="Tile Report" key="report" icon="sap-icon://donut-chart" />
-                    <tnt:NavigationListItem text="Company Document" key="document" icon="sap-icon://document" />
-                    <tnt:NavigationListItem text="Learning Admin" key="learningAdmin" icon="sap-icon://learning-assistant" />
+                    <tnt:NavigationListItem text="Profile" key="profile" icon="sap-icon://business-card" />
+                    <tnt:NavigationListItem text="Learning" key="learning" icon="sap-icon://education" />
+                    <tnt:NavigationListItem text="organization" key="org" icon="sap-icon://tree" />
+                    <tnt:NavigationListItem text="Leaves" key="leaves" icon="sap-icon://calendar" />
                 </tnt:NavigationList>
             </tnt:SideNavigation>
 
@@ -51,7 +48,7 @@
                 </VBox>
 
                 <VBox id="pageContentArea">
-                    <Text text="Select an item from the side navigation to see content here." />
+                    <Text text="Select an item from the side navigation to see content here." class="pageContent"/>
                 </VBox>
             </VBox>
         </HBox>

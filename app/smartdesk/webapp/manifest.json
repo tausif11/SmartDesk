@@ -147,13 +147,6 @@
           "target": [
             "TargetViewLeaves"
           ]
-        },
-        {
-          "name": "ViewTileReport",
-          "pattern": "ViewTileReport/{Id}",
-          "target": [
-            "TargetViewTileReports"
-          ]
         }
       ],
       "targets": {
@@ -202,12 +195,6 @@
           "transition": "slide",
           "id": "ViewLeaves",
           "name": "ViewLeaves"
-        },
-        "TargetViewTileReports": {
-          "viewType": "XML",
-          "transition": "slide",
-          "id": "ViewTileReport",
-          "name": "ViewTileReport"
         }
       }
     },
